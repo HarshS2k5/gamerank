@@ -1,7 +1,10 @@
+'use client'
+
 import Link from 'next/link'
-import { Star, Trophy } from 'lucide-react'
+import { Star, Scale, Check } from 'lucide-react'
 import { GameImage } from '@/components/ui/GameImage'
 import { GameRecord } from '@/types/database'
+import { useComparison } from '@/components/comparison/ComparisonContext'
 
 interface GameCardProps {
   game: GameRecord
@@ -14,6 +17,19 @@ export function GameCard({ game, rank, showRank = false, size = 'md' }: GameCard
   const isLarge = size === 'lg'
   const isSmall = size === 'sm'
 
+  const { isInComparison, addGame, removeGame } = useComparison()
+  const isCompared = isInComparison(game.slug)
+
+  const handleCompareClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (isCompared) {
+      removeGame(game.slug)
+    } else {
+      addGame(game.slug)
+    }
+  }
+
   // Map platform badges
   const platformAbbr: Record<string, string> = {
     'PC': 'PC',
@@ -21,7 +37,8 @@ export function GameCard({ game, rank, showRank = false, size = 'md' }: GameCard
     'PlayStation 5': 'PS5',
     'PlayStation 4': 'PS4',
     'Xbox': 'Xbox',
-    'Xbox Series X': 'XSX',
+    'Xbox Series X|S': 'XSX',
+    'Xbox One': 'XB1',
     'Nintendo Switch': 'Switch',
     'Android': 'Android',
     'iOS': 'iOS',
@@ -29,7 +46,7 @@ export function GameCard({ game, rank, showRank = false, size = 'md' }: GameCard
 
   return (
     <Link href={`/games/${game.slug}`} className="block group">
-      <div className="glass-card overflow-hidden h-full flex flex-col border border-white/10 hover:border-[#00ff88]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#00ff88]/10 hover:-translate-y-1.5">
+      <div className="glass-card overflow-hidden h-full flex flex-col border border-white/10 hover:border-[#00ff88]/50 transition-all duration-300 hover:shadow-xl hover:shadow-[#00ff88]/10 hover:-translate-y-1.5 relative">
         {/* DOMINANT POSTER ARTWORK (3:4 ratio for authentic game covers) */}
         <div className="relative overflow-hidden w-full aspect-[3/4]">
           <GameImage
@@ -59,7 +76,7 @@ export function GameCard({ game, rank, showRank = false, size = 'md' }: GameCard
           )}
 
           {/* GameRank Score Top-Right */}
-          <div className="absolute top-2.5 right-2.5 z-10">
+          <div className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1.5">
             <div className="flex items-center gap-1 bg-black/85 backdrop-blur-md px-2 py-0.5 rounded-md border border-white/20 text-white shadow-md">
               <Star className="w-3 h-3 text-[#00ff88] fill-[#00ff88]" />
               <span className="text-xs font-black text-[#00ff88]">{game.gameRankScore}</span>
@@ -67,9 +84,27 @@ export function GameCard({ game, rank, showRank = false, size = 'md' }: GameCard
             </div>
           </div>
 
+          {/* Quick Compare Button Action Button */}
+          <button
+            onClick={handleCompareClick}
+            className={`absolute bottom-2.5 right-2.5 z-20 p-2 rounded-lg backdrop-blur-md border transition-all duration-200 ${
+              isCompared
+                ? 'bg-[#00ff88] text-black border-[#00ff88] shadow-lg shadow-[#00ff88]/30'
+                : 'bg-black/80 text-gray-300 border-white/20 hover:text-white hover:border-[#00ff88]/60 hover:bg-black/95'
+            }`}
+            title={isCompared ? 'Remove from comparison' : 'Add to comparison'}
+            aria-label="Compare game"
+          >
+            {isCompared ? (
+              <Check className="w-3.5 h-3.5 stroke-[3]" />
+            ) : (
+              <Scale className="w-3.5 h-3.5" />
+            )}
+          </button>
+
           {/* Free To Play Ribbon if applicable */}
           {game.freeToPlay && (
-            <div className="absolute bottom-2 left-2 z-10">
+            <div className="absolute bottom-2.5 left-2.5 z-10">
               <span className="bg-[#00d4ff]/90 backdrop-blur-sm text-black text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded">
                 Free to Play
               </span>

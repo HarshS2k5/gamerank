@@ -3,10 +3,13 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { ComparisonProvider } from '@/components/comparison/ComparisonContext'
+import { ComparisonBar } from '@/components/comparison/ComparisonBar'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://gamerank.app'),
   title: {
     template: '%s | GameRank',
     default: 'GameRank - Worldwide Gaming Rankings & Discovery',
@@ -42,11 +45,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-[#0f0f0f] text-white min-h-screen font-sans antialiased">
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
+        <ComparisonProvider>
+          <Navbar />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <ComparisonBar />
+          <Footer />
+        </ComparisonProvider>
       </body>
     </html>
   )

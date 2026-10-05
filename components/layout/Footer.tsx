@@ -21,6 +21,9 @@ const FOOTER_LINKS = {
     { href: '/rankings/sports', label: 'Best Sports' },
   ],
   Discover: [
+    { href: '/compare', label: 'Game Comparison' },
+    { href: '/releases', label: 'Release Calendar' },
+    { href: '/ai-game-finder', label: 'AI Game Finder' },
     { href: '/rankings/most-popular', label: 'Most Popular' },
     { href: '/rankings/best-of-year', label: 'Best of Year' },
     { href: '/rankings/upcoming', label: 'Upcoming Games' },

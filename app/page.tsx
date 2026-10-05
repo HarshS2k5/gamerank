@@ -1,5 +1,7 @@
 import { Suspense } from 'react'
 import { Metadata } from 'next'
+import Link from 'next/link'
+import { Sparkles, ArrowRight, Bot } from 'lucide-react'
 import { HeroSection } from '@/components/home/HeroSection'
 import { GameCarousel } from '@/components/ui/GameCarousel'
 import { PlatformGrid } from '@/components/home/PlatformGrid'
@@ -91,7 +93,45 @@ export default async function HomePage() {
           showRank={true}
         />
 
-        {/* 10. Transparent GameRank Methodology Card */}
+        {/* 10. 🎯 FIND YOUR NEXT GAME - AI Game Finder CTA */}
+        <section className="relative overflow-hidden rounded-3xl border border-[#00ff88]/30 bg-gradient-to-r from-[#141416] via-[#1a1a24] to-[#141416] p-8 sm:p-12 shadow-2xl">
+          <div className="absolute -right-10 -bottom-10 w-80 h-80 bg-[#00ff88]/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-10 -top-10 w-80 h-80 bg-[#00d4ff]/10 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="relative z-10 max-w-3xl mx-auto text-center space-y-6">
+            <div className="inline-flex items-center gap-2 bg-[#00ff88]/15 border border-[#00ff88]/30 text-[#00ff88] text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+              <Bot className="w-4 h-4" />
+              <span>AI Recommendation Engine</span>
+            </div>
+            
+            <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight">
+              🎯 FIND YOUR NEXT GAME
+            </h2>
+            
+            <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+              Not sure what to play? Let the AI Game Finder recommend your next favorite game. Type what you feel like playing in natural language or filter by exact platform, genres, and modes.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+              <Link
+                href="/ai-game-finder"
+                className="btn-primary text-sm sm:text-base font-bold px-8 py-3.5 flex items-center gap-2 shadow-xl shadow-[#00ff88]/20"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Try AI Game Finder</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/compare"
+                className="btn-secondary text-sm sm:text-base font-bold px-6 py-3.5 flex items-center gap-2"
+              >
+                <span>Compare Top Games</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 11. Transparent GameRank Methodology Card */}
         <section className="glass-card p-8 md:p-12 border border-white/10 rounded-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-96 h-96 bg-[#00ff88]/5 rounded-full blur-3xl pointer-events-none" />
           
