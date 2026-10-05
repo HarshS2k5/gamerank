@@ -23,6 +23,7 @@ export interface GameRecord {
   slug: string
   coverImage: string        // Vertical box-art / official poster (3:4 ratio)
   backgroundImage: string   // Landscape banner / wallpaper (16:9 ratio)
+  thumbnailImage?: string   // Compact thumbnail preview (header/square)
   description: string
   releaseDate: string
   releaseStatus?: ReleaseStatus

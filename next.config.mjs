@@ -28,6 +28,18 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'store.akamai.steamstatic.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'steamcdn-a.akamaihd.net',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'images.unsplash.com',
         port: '',
         pathname: '/**',

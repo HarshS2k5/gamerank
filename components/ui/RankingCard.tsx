@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Star, TrendingUp } from 'lucide-react'
 import { RAWGGame } from '@/types'
 import { getImageUrl } from '@/lib/utils'
+import { GameImage } from '@/components/ui/GameImage'
 
 interface RankingCardProps {
   game: RAWGGame
@@ -10,7 +11,7 @@ interface RankingCardProps {
 }
 
 export function RankingCard({ game, rank }: RankingCardProps) {
-  const imageUrl = getImageUrl(game.background_image)
+  const imageUrl = getImageUrl((game as any).coverImage || (game as any).thumbnailImage || game.background_image)
 
   const rankStyle = rank === 1 ? 'text-yellow-400' : rank === 2 ? 'text-gray-300' : rank === 3 ? 'text-orange-400' : 'text-gray-500'
   const rankBg = rank <= 3 ? 'bg-gradient-to-r from-yellow-500/10 to-transparent' : ''
@@ -24,12 +25,8 @@ export function RankingCard({ game, rank }: RankingCardProps) {
         </div>
 
         {/* Game Image */}
-        <div className="relative w-16 h-12 rounded-lg overflow-hidden shrink-0">
-          {imageUrl ? (
-            <Image src={imageUrl} alt={game.name} fill className="object-cover" />
-          ) : (
-            <div className="w-full h-full bg-[#2a2a2a]" />
-          )}
+        <div className="relative w-14 h-16 rounded-lg overflow-hidden shrink-0 border border-white/10">
+          <GameImage src={imageUrl} alt={game.name} aspectRatio="poster" />
         </div>
 
         {/* Game Info */}

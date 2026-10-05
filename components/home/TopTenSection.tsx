@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Star } from 'lucide-react'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { GameImage } from '@/components/ui/GameImage'
 
 async function getTopTenGames() {
   try {
@@ -58,16 +59,13 @@ export async function TopTenSection() {
                   : `#${index + 1}`}
               </div>
 
-              {/* Image */}
-              <div className="relative w-20 h-12 rounded-lg overflow-hidden shrink-0">
-                {game.background_image && (
-                  <Image
-                    src={game.background_image}
-                    alt={game.name}
-                    fill
-                    className="object-cover"
-                  />
-                )}
+              {/* 3:4 Game Poster */}
+              <div className="relative w-12 h-16 rounded-lg overflow-hidden shrink-0 border border-white/10">
+                <GameImage
+                  src={game.coverImage || game.background_image}
+                  alt={game.name}
+                  aspectRatio="poster"
+                />
               </div>
 
               {/* Info */}
