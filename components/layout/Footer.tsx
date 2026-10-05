@@ -31,6 +31,7 @@ const FOOTER_LINKS = {
     { href: '/rankings/free-to-play', label: 'Free to Play' },
     { href: '/rankings/multiplayer', label: 'Best Multiplayer' },
     { href: '/search', label: 'Search Games' },
+    { href: '/sitemap', label: 'Sitemap' },
   ],
 }
 

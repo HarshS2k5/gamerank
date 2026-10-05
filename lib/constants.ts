@@ -20,7 +20,7 @@ export const SITE_DESCRIPTION =
   'Discover, rank, and explore the best video games across every platform and genre. GameRank combines critic scores, community ratings, and popularity data to surface the games worth your time.';
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gamerank.vercel.app';
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gamerank-one.vercel.app';
 
 // ---------------------------------------------------------------------------
 // RAWG platform IDs

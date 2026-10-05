@@ -9,7 +9,7 @@ import { ComparisonBar } from '@/components/comparison/ComparisonBar'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://gamerank.app'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://gamerank-one.vercel.app'),
   title: {
     template: '%s | GameRank',
     default: 'GameRank - Worldwide Gaming Rankings & Discovery',
@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     description: 'Discover the best video games worldwide.',
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: '2gJrjAhc8Lyn5YXbSZae2jd92edcinBkDKVvh8fbjwQ',
+  },
 }
 
 export const viewport: Viewport = {
