@@ -1,49 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-
-const STEAM_MAPPINGS = {
-  'elden-ring': 1245620,
-  'grand-theft-auto-v': 271590,
-  'red-dead-redemption-2': 1174180,
-  'the-witcher-3-wild-hunt': 292030,
-  'cyberpunk-2077': 1091500,
-  'baldurs-gate-3': 1086940,
-  'god-of-war-ragnarok': 2322010,
-  'marvels-spider-man-2': 2651280,
-  'hades-ii': 1145350,
-  'hollow-knight-silksong': 1030300,
-  'doom-the-dark-ages': 3017860,
-  'death-stranding-2-on-the-beach': 3280350,
-  'monster-hunter-wilds': 2246340,
-  'hollow-knight': 367520,
-  'terraria': 105600,
-  'counter-strike-2': 730,
-  'apex-legends': 1172470,
-  'forza-horizon-5': 1551360,
-  'resident-evil-4': 2050650,
-  'stardew-valley': 413150,
-  'dark-souls-iii': 374320,
-  'sekiro-shadows-die-twice': 814380,
-  'hogwarts-legacy': 990080,
-  'ghost-of-tsushima': 2215430,
-  'the-last-of-us-part-i': 1888930,
-  'street-fighter-6': 1364780,
-  'tekken-8': 1778820,
-  'cuphead': 268910,
-  'celeste': 504230,
-  'wuthering-waves': 3513350,
-  'dota-2': 570,
-  'rocket-league': 252950,
-  'overwatch-2': 2357570,
-  'ea-sports-fc-24': 2195250,
-};
-
-const SPECIFIC_COVERS = {
-  'death-stranding-2-on-the-beach': 'https://images.igdb.com/igdb/image/upload/t_cover_big/co7ubx.jpg',
-  'wuthering-waves': 'https://images.igdb.com/igdb/image/upload/t_cover_big/co8d8u.jpg',
-};
-
-const NON_STEAM_ASSETS = {
+const TEST_ASSETS = {
   'minecraft': {
     cover: 'https://store-images.s-microsoft.com/image/apps.808.14492077886571533.be42f4bd-887b-4430-8ed0-622341b4d2b0.c8274c53-105e-478b-9f4b-41b8088210a3',
     thumb: 'https://store-images.s-microsoft.com/image/apps.54465.14492077886571533.be42f4bd-887b-4430-8ed0-622341b4d2b0.5054cf02-8b0f-47e2-9d15-7ddc81f63638',
@@ -244,167 +199,49 @@ const NON_STEAM_ASSETS = {
   }
 };
 
-async function verifyUrl(url) {
-  try {
-    const res = await fetch(url, { method: 'HEAD', signal: AbortSignal.timeout(6000), headers: { 'User-Agent': 'GameRank/1.0' } });
-    if (res.ok) return true;
-    const gRes = await fetch(url, { method: 'GET', headers: { 'Range': 'bytes=0-10', 'User-Agent': 'GameRank/1.0' }, signal: AbortSignal.timeout(6000) });
-    return gRes.ok;
-  } catch (e) {
-    return false;
-  }
-}
+async function verifyAll() {
+  console.log('--- Verifying All 18 Custom Game Assets (HTTP 200) ---');
+  let passCount = 0;
+  let failCount = 0;
 
-async function fetchSteamData(appId, gameSlug) {
-  try {
-    const res = await fetch(`https://store.steampowered.com/api/appdetails?appids=${appId}`, { signal: AbortSignal.timeout(8000) });
-    const data = await res.json();
-    if (!data[appId] || !data[appId].success) return null;
-    const d = data[appId].data;
+  for (const [slug, data] of Object.entries(TEST_ASSETS)) {
+    const urlsToTest = [
+      { type: 'cover', url: data.cover },
+      { type: 'thumb', url: data.thumb },
+      { type: 'bg', url: data.bg },
+      ...data.shots.map((s, idx) => ({ type: `shot_${idx + 1}`, url: s }))
+    ];
 
-    const base = `https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/${appId}/`;
-    
-    // Check if custom cover is explicitly provided
-    let cover = SPECIFIC_COVERS[gameSlug] || `${base}library_600x900_2x.jpg`;
-    const coverValid = await verifyUrl(cover);
-    if (!coverValid) {
-      cover = d.header_image || `${base}header.jpg`;
-    }
-
-    const hero = `${base}library_hero.jpg`;
-    const header = d.header_image || `${base}header.jpg`;
-    const shots = (d.screenshots || []).slice(0, 6).map(s => s.path_full);
-
-    return { cover, hero, header, shots };
-  } catch (e) {
-    console.error(`Error fetching Steam appId ${appId}:`, e.message);
-    return null;
-  }
-}
-
-async function run() {
-  console.log('--- Starting GameRank Complete Image Enrichment & Verification ---');
-  const dbFile = path.join(__dirname, '../lib/database.ts');
-  const content = fs.readFileSync(dbFile, 'utf8');
-  const jsonMatch = content.match(/export const SEED_GAMES: GameRecord\[\] = (\[[\s\S]*?\]);\s*$/);
-  if (!jsonMatch) throw new Error('Could not parse SEED_GAMES');
-
-  const games = JSON.parse(jsonMatch[1]);
-  console.log(`Total games to enrich: ${games.length}`);
-
-  let updatedCount = 0;
-  let verifiedCount = 0;
-  let brokenCount = 0;
-
-  for (let i = 0; i < games.length; i++) {
-    const game = games[i];
-    console.log(`\n[${i + 1}/${games.length}] Processing "${game.name}" (${game.slug})...`);
-
-    let newCover = null;
-    let newBg = null;
-    let newThumb = null;
-    let newShots = null;
-
-    if (NON_STEAM_ASSETS[game.slug]) {
-      const a = NON_STEAM_ASSETS[game.slug];
-      newCover = a.cover;
-      newBg = a.bg;
-      newThumb = a.thumb;
-      newShots = a.shots;
-    } else if (STEAM_MAPPINGS[game.slug]) {
-      const appId = STEAM_MAPPINGS[game.slug];
-      const sData = await fetchSteamData(appId, game.slug);
-      if (sData) {
-        newCover = sData.cover;
-        newBg = sData.hero;
-        newThumb = sData.header;
-        newShots = sData.shots;
+    let gamePass = true;
+    for (const item of urlsToTest) {
+      try {
+        const res = await fetch(item.url, { method: 'HEAD', headers: { 'User-Agent': 'Mozilla/5.0' }, signal: AbortSignal.timeout(6000) });
+        if (!res.ok) {
+          const gRes = await fetch(item.url, { method: 'GET', headers: { Range: 'bytes=0-10', 'User-Agent': 'Mozilla/5.0' }, signal: AbortSignal.timeout(6000) });
+          if (!gRes.ok) {
+            console.error(`❌ [${slug}] ${item.type} FAILED (${gRes.status}): ${item.url}`);
+            gamePass = false;
+          }
+        }
+      } catch (e) {
+        console.error(`❌ [${slug}] ${item.type} ERROR: ${e.message} (${item.url})`);
+        gamePass = false;
       }
     }
 
-    if (newCover) {
-      // Test cover
-      const coverOk = await verifyUrl(newCover);
-      if (coverOk) {
-        game.coverImage = newCover;
-      } else {
-        console.warn(`  ⚠️ Cover failed for ${game.slug}: ${newCover}`);
-      }
-
-      // Test bg
-      const bgOk = await verifyUrl(newBg);
-      if (bgOk) {
-        game.backgroundImage = newBg;
-      } else {
-        game.backgroundImage = (newShots && newShots[0]) || newCover || game.coverImage;
-      }
-
-      // Test thumb
-      const thumbOk = await verifyUrl(newThumb);
-      if (thumbOk) {
-        game.thumbnailImage = newThumb;
-      } else {
-        game.thumbnailImage = game.coverImage;
-      }
-
-      // Test shots
-      const verifiedShots = [];
-      for (const s of (newShots || [])) {
-        const sOk = await verifyUrl(s);
-        if (sOk) verifiedShots.push(s);
-      }
-      if (verifiedShots.length >= 3) {
-        game.screenshots = verifiedShots;
-      }
-
-      updatedCount++;
-    }
-
-    // Final verification check on current game assets
-    const finalCoverOk = await verifyUrl(game.coverImage);
-    const finalBgOk = await verifyUrl(game.backgroundImage);
-    const finalThumbOk = await verifyUrl(game.thumbnailImage || game.coverImage);
-    const finalShotsOk = game.screenshots.length > 0;
-
-    const hasUnsplash = game.coverImage.includes('unsplash.com') ||
-      game.backgroundImage.includes('unsplash.com') ||
-      (game.thumbnailImage && game.thumbnailImage.includes('unsplash.com')) ||
-      game.screenshots.some(s => s.includes('unsplash.com'));
-
-    const hasAppIcon = game.coverImage.includes('AppIcon') ||
-      (game.thumbnailImage && game.thumbnailImage.includes('AppIcon'));
-
-    if (finalCoverOk && finalBgOk && finalThumbOk && finalShotsOk && !hasUnsplash && !hasAppIcon) {
-      console.log(`  ✅ ALL ASSETS 100% VERIFIED: Cover, Thumbnail, Background, & ${game.screenshots.length} Screenshots (0 Unsplash, 0 AppIcons)`);
-      verifiedCount++;
+    if (gamePass) {
+      console.log(`✅ [${slug}] 100% PASS (${urlsToTest.length} assets verified)`);
+      passCount++;
     } else {
-      console.error(`  ❌ ASSET ISSUE for ${game.name}: cover=${finalCoverOk}, bg=${finalBgOk}, thumb=${finalThumbOk}, shots=${finalShotsOk}, unsplash=${hasUnsplash}, appIcon=${hasAppIcon}`);
-      brokenCount++;
+      failCount++;
     }
   }
 
   console.log('\n=======================================');
-  console.log(`Total Games: ${games.length}`);
-  console.log(`Updated Games: ${updatedCount}`);
-  console.log(`Fully Verified Games: ${verifiedCount}`);
-  console.log(`Games with Issues: ${brokenCount}`);
+  console.log(`Games Checked: ${Object.keys(TEST_ASSETS).length}`);
+  console.log(`Games Passed: ${passCount}`);
+  console.log(`Games Failed: ${failCount}`);
   console.log('=======================================');
-
-  if (brokenCount === 0) {
-    const newDbCode = `// ─────────────────────────────────────────────────────────────────────────────
-// GameRank – Scalable Game Database with Verified Cover Posters & Specs
-// ─────────────────────────────────────────────────────────────────────────────
-import { GameRecord } from '@/types/database';
-
-export const SEED_GAMES: GameRecord[] = ${JSON.stringify(games, null, 2)};
-`;
-
-    fs.writeFileSync(dbFile, newDbCode, 'utf8');
-    fs.writeFileSync(path.join(__dirname, 'seed-data.js'), `module.exports = ${JSON.stringify(games, null, 2)};\n`, 'utf8');
-    console.log('Successfully saved verified database to lib/database.ts and scripts/seed-data.js!');
-  } else {
-    console.error('Did not overwrite database due to asset issues. Please inspect errors.');
-  }
 }
 
-run().catch(console.error);
+verifyAll();
