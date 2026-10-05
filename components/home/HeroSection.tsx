@@ -1,206 +1,146 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Star, Calendar, ChevronRight, Trophy } from 'lucide-react'
+import { Trophy, Star, Sparkles, Flame, Gamepad2 } from 'lucide-react'
+import { GameImage } from '@/components/ui/GameImage'
+import { GameRecord } from '@/types/database'
 
-async function getFeaturedGame() {
-  try {
-    const apiKey = process.env.RAWG_API_KEY
-    if (!apiKey) return null
-
-    // Get a highly rated, visually impressive game for hero
-    const res = await fetch(
-      `https://api.rawg.io/api/games?key=${apiKey}&ordering=-rating&page_size=10&metacritic=85,100`,
-      { next: { revalidate: 3600 * 6 } }
-    )
-    if (!res.ok) return null
-    const data = await res.json()
-    // Return the first game that has a good background image
-    const game =
-      data.results?.find(
-        (g: any) => g.background_image && g.background_image_additional
-      ) || data.results?.[0]
-    return game || null
-  } catch {
-    return null
-  }
+interface HeroProps {
+  featuredGames: GameRecord[]
 }
 
-export async function HeroSection() {
-  const game = await getFeaturedGame()
-
-  if (!game) {
-    // Fallback when no API key configured
-    return (
-      <div className="relative h-[85vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0f0f0f] via-[#1a1a2e] to-[#0f0f0f]" />
-        <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
-          <div className="inline-flex items-center gap-2 bg-[#00ff88]/20 text-[#00ff88] text-sm font-medium px-4 py-2 rounded-full mb-6">
-            <Trophy className="w-4 h-4" />
-            Worldwide Gaming Rankings
-          </div>
-          <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight">
-            Discover the
-            <span className="text-gradient block">World&apos;s Best</span>
-            Games
-          </h1>
-          <p className="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-            Data-driven rankings across PC, PlayStation, Xbox, Nintendo, and mobile — powered by real game data.
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <Link
-              href="/rankings/all-time"
-              className="btn-primary text-base px-8 py-3 flex items-center gap-2"
-            >
-              <Trophy className="w-5 h-5" />
-              Explore Rankings
-            </Link>
-            <Link href="/search" className="btn-secondary text-base px-8 py-3">
-              Search Games
-            </Link>
-          </div>
-          <div className="mt-6 p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-xl text-sm text-yellow-400 max-w-md mx-auto">
-            ⚠️ Add your RAWG_API_KEY to .env.local to see real game data.
-            <a
-              href="https://rawg.io/apidocs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline ml-1"
-            >
-              Get free key →
-            </a>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  const platforms = game.parent_platforms?.slice(0, 4) || []
-  const platformIcons: Record<string, string> = {
-    pc: '🖥️',
-    playstation: '🎮',
-    xbox: '🎮',
-    nintendo: '🕹️',
-    android: '📱',
-    ios: '📱',
+export function HeroSection({ featuredGames }: HeroProps) {
+  // Use the top game (e.g. Elden Ring or GTA V) for hero background
+  const main = featuredGames[0] || {
+    name: 'Elden Ring',
+    slug: 'elden-ring',
+    description: 'A fantasy action-RPG adventure set within a world created by Hidetaka Miyazaki and George R. R. Martin. Journey through the Lands Between to claim the power of the Elden Ring.',
+    coverImage: 'https://media.rawg.io/media/games/b29/b2960ad9f49d581d8249646e48a240f7.jpg',
+    backgroundImage: 'https://media.rawg.io/media/games/b29/b2960ad9f49d581d8249646e48a240f7.jpg',
+    gameRankScore: 98,
+    genres: ['Action RPG', 'Open World'],
+    platforms: ['PC', 'PlayStation', 'Xbox'],
   }
 
   return (
-    <div className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
+    <div className="relative min-h-[85vh] w-full flex items-center justify-center overflow-hidden pt-12 pb-20">
+      {/* Cinematic Ambient Background */}
+      <div className="absolute inset-0 z-0">
         <Image
-          src={game.background_image_additional || game.background_image}
-          alt={game.name}
+          src={main.backgroundImage}
+          alt={main.name}
           fill
-          className="object-cover"
+          className="object-cover object-top opacity-35 filter blur-[1px] scale-105 transition-transform duration-1000"
           priority
-          quality={90}
         />
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-[#0f0f0f]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f0f0f] via-transparent to-[#0f0f0f]" />
       </div>
 
-      {/* Featured Badge */}
-      <div className="absolute top-8 left-8 z-10">
-        <div className="flex items-center gap-2 bg-[#00ff88]/20 backdrop-blur-sm text-[#00ff88] text-xs font-bold px-3 py-1.5 rounded-full border border-[#00ff88]/30">
-          <span className="w-2 h-2 bg-[#00ff88] rounded-full animate-pulse" />
-          FEATURED GAME
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
-        <div className="max-w-2xl">
-          {/* Platform Icons */}
-          {platforms.length > 0 && (
-            <div className="flex items-center gap-2 mb-4">
-              {platforms.map(({ platform }: any) => (
-                <span key={platform.id} className="text-xl" title={platform.name}>
-                  {platformIcons[platform.slug] || '🎮'}
-                </span>
-              ))}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Column: Branding, Title, and Direct Exploration Buttons */}
+          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 bg-[#00ff88]/15 border border-[#00ff88]/30 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#00ff88] shadow-lg shadow-[#00ff88]/10">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>THE WORLDWIDE GAMING AUTHORITY</span>
             </div>
-          )}
 
-          {/* Title */}
-          <h1 className="text-4xl md:text-6xl font-black text-white mb-3 leading-tight">
-            {game.name}
-          </h1>
-
-          {/* Meta */}
-          <div className="flex items-center gap-4 mb-4">
-            {game.rating > 0 && (
-              <div className="flex items-center gap-1.5">
-                <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                <span className="text-white font-semibold text-lg">
-                  {game.rating.toFixed(1)}
-                </span>
-                <span className="text-gray-400 text-sm">/ 5</span>
-              </div>
-            )}
-            {game.metacritic && (
-              <span
-                className={`text-sm font-bold px-3 py-1 rounded ${
-                  game.metacritic >= 75
-                    ? 'bg-green-600'
-                    : game.metacritic >= 50
-                    ? 'bg-yellow-500 text-black'
-                    : 'bg-red-600'
-                } text-white`}
-              >
-                MC: {game.metacritic}
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-white tracking-tight uppercase leading-[0.95]">
+              GAMERANK
+              <span className="block text-gradient text-3xl sm:text-5xl md:text-6xl mt-2 font-extrabold normal-case">
+                Discover the World&apos;s Best Games
               </span>
-            )}
-            {game.released && (
-              <div className="flex items-center gap-1 text-gray-400">
-                <Calendar className="w-4 h-4" />
-                <span className="text-sm">
-                  {new Date(game.released).getFullYear()}
-                </span>
-              </div>
-            )}
-          </div>
+            </h1>
 
-          {/* Description */}
-          {game.description_raw && (
-            <p className="text-gray-300 text-base leading-relaxed mb-6 line-clamp-3">
-              {game.description_raw.replace(/<[^>]*>/g, '').slice(0, 200)}...
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl leading-relaxed">
+              Explore thousands of games across PC, PlayStation, Xbox, Nintendo Switch, and mobile with verified official cover artwork and transparent algorithmic rankings.
             </p>
-          )}
 
-          {/* Genre Tags */}
-          {game.genres && game.genres.length > 0 && (
-            <div className="flex items-center gap-2 mb-6 flex-wrap">
-              {game.genres.slice(0, 3).map((g: any) => (
-                <Link
-                  key={g.id}
-                  href={`/rankings/${g.slug}`}
-                  className="text-xs bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-1 rounded-full text-gray-300 transition-colors"
-                >
-                  {g.name}
-                </Link>
-              ))}
+            {/* CTA Buttons */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <Link
+                href="/rankings/all-time"
+                className="btn-primary flex items-center gap-2 text-sm sm:text-base px-7 py-3"
+              >
+                <Trophy className="w-5 h-5" />
+                Top 100 Rankings
+              </Link>
+              <Link
+                href="/search"
+                className="btn-secondary flex items-center gap-2 text-sm sm:text-base px-7 py-3"
+              >
+                <Gamepad2 className="w-5 h-5" />
+                Explore Games
+              </Link>
             </div>
-          )}
 
-          {/* CTA Buttons */}
-          <div className="flex items-center gap-4">
-            <Link
-              href={`/games/${game.slug}`}
-              className="btn-primary flex items-center gap-2 text-base px-8 py-3"
-            >
-              View Game
-              <ChevronRight className="w-5 h-5" />
-            </Link>
-            <Link
-              href="/rankings/all-time"
-              className="btn-secondary flex items-center gap-2 text-base px-6 py-3"
-            >
-              <Trophy className="w-5 h-5" />
-              Top Rankings
+            {/* Quick Badges */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 pt-4 text-xs text-gray-400">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#00ff88]" />
+                <span>100% Official Cover Posters</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#00d4ff]" />
+                <span>Real Community & Critic Ratings</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#ff6b35]" />
+                <span>Cross-Platform Coverage</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Featured Game Showcase Poster Card */}
+          <div className="lg:col-span-5 flex justify-center">
+            <Link href={`/games/${main.slug}`} className="group relative block w-full max-w-[320px]">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#00ff88] to-[#00d4ff] rounded-2xl blur-lg opacity-40 group-hover:opacity-75 transition duration-500" />
+              
+              <div className="relative glass-card overflow-hidden rounded-2xl border border-white/20 shadow-2xl bg-[#141416]">
+                <div className="relative aspect-[3/4] w-full overflow-hidden">
+                  <GameImage
+                    src={main.coverImage}
+                    alt={main.name}
+                    aspectRatio="poster"
+                    priority
+                    className="w-full h-full group-hover:scale-105 transition-transform duration-500"
+                  />
+                  
+                  {/* Spotlight Pill */}
+                  <div className="absolute top-3 left-3 bg-black/85 backdrop-blur-md px-2.5 py-1 rounded-md text-[11px] font-black uppercase text-[#00ff88] border border-[#00ff88]/40 flex items-center gap-1.5">
+                    <Flame className="w-3.5 h-3.5 text-orange-500 fill-orange-500" />
+                    <span>#1 GAME WORLDWIDE</span>
+                  </div>
+
+                  <div className="absolute top-3 right-3 bg-black/85 backdrop-blur-md px-2.5 py-1 rounded-md text-xs font-black text-white border border-white/20 flex items-center gap-1">
+                    <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
+                    <span>{main.gameRankScore}</span>
+                  </div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+                  
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h3 className="text-xl font-black text-white group-hover:text-[#00ff88] transition-colors leading-tight">
+                      {main.name}
+                    </h3>
+                    <p className="text-xs text-gray-300 mt-1 line-clamp-2">
+                      {main.description}
+                    </p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="text-[10px] uppercase font-bold text-[#00ff88] bg-[#00ff88]/15 px-2 py-0.5 rounded border border-[#00ff88]/30">
+                        {main.genres[0]}
+                      </span>
+                      <span className="text-xs text-gray-400">
+                        {main.platforms.slice(0, 3).join(', ')}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </Link>
           </div>
+
         </div>
       </div>
     </div>

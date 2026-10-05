@@ -1,121 +1,129 @@
 import { Suspense } from 'react'
+import { Metadata } from 'next'
 import { HeroSection } from '@/components/home/HeroSection'
-import { TopTenSection } from '@/components/home/TopTenSection'
+import { GameCarousel } from '@/components/ui/GameCarousel'
 import { PlatformGrid } from '@/components/home/PlatformGrid'
 import { GenreGrid } from '@/components/home/GenreGrid'
-import { TrendingSection } from '@/components/home/TrendingSection'
-import { NewReleasesSection } from '@/components/home/NewReleasesSection'
-import { UpcomingSection } from '@/components/home/UpcomingSection'
-import { FreeGamesSection } from '@/components/home/FreeGamesSection'
-import { GameCardSkeleton } from '@/components/ui/GameCard'
-import { Metadata } from 'next'
+import { GameDataProvider } from '@/lib/provider'
 
 export const metadata: Metadata = {
-  title: 'GameRank - Worldwide Gaming Rankings & Discovery',
-  description: 'Discover the best video games worldwide. Explore rankings by platform, genre, and popularity with real data from the RAWG database.',
+  title: 'GameRank - Worldwide Video Game Database & Rankings',
+  description: 'Discover and rank the greatest video games across PC, PlayStation, Xbox, Nintendo, and mobile with genuine cover artwork, critic scores, and player reviews.',
 }
 
 export default async function HomePage() {
+  const allGames = await GameDataProvider.getAllGames()
+
+  // Slices for each horizontal carousel
+  const trendingGames = [...allGames].sort((a, b) => b.trendingScore - a.trendingScore).slice(0, 15)
+  const topRatedGames = [...allGames].sort((a, b) => b.gameRankScore - a.gameRankScore).slice(0, 15)
+  const popularGames = [...allGames].sort((a, b) => b.popularity - a.popularity).slice(0, 15)
+  
+  const pcGames = allGames.filter((g) => g.platforms.some((p) => p.includes('PC'))).slice(0, 15)
+  const consoleGames = allGames.filter((g) => g.platforms.some((p) => p.includes('PlayStation') || p.includes('Xbox') || p.includes('Nintendo'))).slice(0, 15)
+  const mobileGames = allGames.filter((g) => g.platforms.some((p) => p.includes('Android') || p.includes('iOS'))).slice(0, 15)
+  const classicGames = allGames.filter((g) => new Date(g.releaseDate).getFullYear() <= 2017).slice(0, 15)
+
   return (
-    <div className="min-h-screen">
-      {/* Hero - Featured Game */}
-      <Suspense fallback={
-        <div className="w-full h-[85vh] bg-[#1a1a1a] animate-pulse" />
-      }>
-        <HeroSection />
-      </Suspense>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-20">
-        {/* Top 10 Worldwide */}
-        <Suspense fallback={
-          <div className="space-y-4">
-            {[...Array(10)].map((_, i) => (
-              <div key={i} className="h-16 loading-skeleton rounded-xl" />
-            ))}
-          </div>
-        }>
-          <TopTenSection />
-        </Suspense>
+    <div className="min-h-screen pb-24">
+      {/* 1. Hero Section with GameRank Identity */}
+      <HeroSection featuredGames={topRatedGames} />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
-        {/* Explore by Platform */}
+        {/* 2. 🔥 Trending Now Carousel */}
+        <GameCarousel
+          title="Trending Now"
+          subtitle="Games gaining the most momentum across the gaming community right now"
+          icon="🔥"
+          games={trendingGames}
+          showRank={true}
+        />
+
+        {/* 3. 🏆 Top Rated Worldwide Carousel */}
+        <GameCarousel
+          title="Top Rated Worldwide"
+          subtitle="The highest scoring video games of all time according to GameRank"
+          icon="🏆"
+          games={topRatedGames}
+          showRank={true}
+        />
+
+        {/* 4. Explore by Platform Navigation Grid */}
         <PlatformGrid />
-        
-        {/* Explore by Genre */}
+
+        {/* 5. 💻 Best PC Games Carousel */}
+        <GameCarousel
+          title="Best PC Games"
+          subtitle="Definitive titles available on PC, Steam, and Epic Games"
+          icon="💻"
+          games={pcGames}
+          showRank={true}
+        />
+
+        {/* 6. 🎮 Popular Console Games Carousel */}
+        <GameCarousel
+          title="Best Console Games"
+          subtitle="Blockbusters on PlayStation 5, Xbox Series X|S, and Nintendo Switch"
+          icon="🎮"
+          games={consoleGames}
+          showRank={true}
+        />
+
+        {/* 7. Explore by Genre Navigation Grid */}
         <GenreGrid />
-        
-        {/* Trending Worldwide */}
-        <Suspense fallback={
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[...Array(8)].map((_, i) => <GameCardSkeleton key={i} />)}
+
+        {/* 8. 📱 Best Mobile Games Carousel */}
+        <GameCarousel
+          title="Best Mobile Games"
+          subtitle="High-caliber titles available on Android, iPhone, and iPad"
+          icon="📱"
+          games={mobileGames}
+          showRank={true}
+        />
+
+        {/* 9. ⭐ All-Time Classics Carousel */}
+        <GameCarousel
+          title="All-Time Classics"
+          subtitle="Genre-defining games that helped shape the modern industry"
+          icon="⭐"
+          games={classicGames}
+          showRank={true}
+        />
+
+        {/* 10. Transparent GameRank Methodology Card */}
+        <section className="glass-card p-8 md:p-12 border border-white/10 rounded-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-[#00ff88]/5 rounded-full blur-3xl pointer-events-none" />
+          
+          <div className="max-w-3xl mx-auto text-center relative z-10">
+            <span className="text-[#00ff88] text-xs font-black uppercase tracking-widest bg-[#00ff88]/10 px-3 py-1 rounded-full border border-[#00ff88]/20">
+              Transparent Scoring
+            </span>
+            <h2 className="text-2xl md:text-4xl font-black text-white mt-4 mb-3">
+              How the GameRank Score Works
+            </h2>
+            <p className="text-gray-300 text-sm md:text-base mb-8 leading-relaxed">
+              Every score on GameRank is dynamically computed using a balanced formula that combines critic assessments, community sentiment, real player counts, and release timing.
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              {[
+                { weight: '40%', label: 'Critic Score', desc: 'Normalized Metacritic reviews' },
+                { weight: '30%', label: 'Community Rating', desc: 'Verified player feedback' },
+                { weight: '20%', label: 'Popularity', desc: 'Global player engagement' },
+                { weight: '10%', label: 'Recency Curve', desc: 'Rewarding recent excellence' },
+              ].map((factor) => (
+                <div key={factor.label} className="p-4 rounded-xl bg-white/5 border border-white/10 text-center">
+                  <div className="text-2xl font-black text-[#00ff88]">{factor.weight}</div>
+                  <div className="text-sm font-bold text-white mt-1">{factor.label}</div>
+                  <div className="text-xs text-gray-400 mt-1">{factor.desc}</div>
+                </div>
+              ))}
+            </div>
           </div>
-        }>
-          <TrendingSection />
-        </Suspense>
-        
-        {/* New Releases */}
-        <Suspense fallback={
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[...Array(8)].map((_, i) => <GameCardSkeleton key={i} />)}
-          </div>
-        }>
-          <NewReleasesSection />
-        </Suspense>
-        
-        {/* Upcoming Games */}
-        <Suspense fallback={
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {[...Array(6)].map((_, i) => <GameCardSkeleton key={i} />)}
-          </div>
-        }>
-          <UpcomingSection />
-        </Suspense>
-        
-        {/* Free to Play */}
-        <Suspense fallback={
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[...Array(8)].map((_, i) => <GameCardSkeleton key={i} />)}
-          </div>
-        }>
-          <FreeGamesSection />
-        </Suspense>
-        
-        {/* Ranking Methodology */}
-        <RankingMethodologySection />
+        </section>
+
       </div>
     </div>
-  )
-}
-
-function RankingMethodologySection() {
-  return (
-    <section className="glass-card p-8 md:p-12">
-      <div className="max-w-3xl mx-auto text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-          How We Rank Games
-        </h2>
-        <p className="text-gray-400 mb-8">
-          GameRank uses a transparent, multi-factor algorithm combining real data sources.
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { icon: '🎯', label: 'Critic Score', weight: '40%', desc: 'Metacritic aggregate score' },
-            { icon: '⭐', label: 'Community Rating', weight: '30%', desc: 'User ratings from RAWG' },
-            { icon: '🔥', label: 'Popularity', weight: '20%', desc: 'Based on ratings count' },
-            { icon: '📅', label: 'Recency Bonus', weight: '10%', desc: 'Recent releases rewarded' },
-          ].map((item) => (
-            <div key={item.label} className="text-center">
-              <div className="text-3xl mb-2">{item.icon}</div>
-              <div className="text-[#00ff88] font-bold text-lg mb-1">{item.weight}</div>
-              <div className="text-white font-medium text-sm mb-1">{item.label}</div>
-              <div className="text-gray-500 text-xs">{item.desc}</div>
-            </div>
-          ))}
-        </div>
-        <p className="text-gray-500 text-xs mt-8">
-          Data sourced from <a href="https://rawg.io" target="_blank" rel="noopener noreferrer" className="text-[#00ff88] hover:underline">RAWG Video Games Database</a>.
-          Rankings are recalculated hourly. Scores are normalized for fair comparison.
-        </p>
-      </div>
-    </section>
   )
 }
