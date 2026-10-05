@@ -1,17 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Complete Seed Database for GameRank
-// 60+ Worldwide Masterpieces with Real Covers, System Specs & Release Statuses
-// ─────────────────────────────────────────────────────────────────────────────
-
-const games = [
+module.exports = [
   {
     "id": 1,
     "name": "Minecraft",
     "slug": "minecraft",
-    "coverImage": "https://media.rawg.io/media/games/b4e/b4e4c73d5aa4ec66bbf7537d14210d52.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/3b/b7/24/3bb724be-0244-933a-af48-ad2195689877/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/512x512bb.jpg",
     "backgroundImage": "https://images.unsplash.com/photo-1627856013091-fed6e4e30025?q=80&w=1920&auto=format&fit=crop",
     "description": "Explore randomly generated worlds and build amazing things from the simplest of homes to the grandest of castles. Play in creative mode with unlimited resources or mine deep into the world in survival mode, crafting weapons and armor to fend off dangerous mobs.",
     "releaseDate": "2011-11-18",
@@ -79,7 +71,8 @@ const games = [
         "storage": "8 GB SSD"
       }
     },
-    "thumbnailImage": "https://media.rawg.io/media/games/b4e/b4e4c73d5aa4ec66bbf7537d14210d52.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/3b/b7/24/3bb724be-0244-933a-af48-ad2195689877/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/512x512bb.jpg",
+    "gameRankScore": 82
   },
   {
     "id": 2,
@@ -152,7 +145,8 @@ const games = [
         "storage": "60 GB SSD space"
       }
     },
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/f0b19c231f86fa0e633ff88a1a63459443017728/header_alt_assets_3.jpg?t=1790290043"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1245620/f0b19c231f86fa0e633ff88a1a63459443017728/header_alt_assets_3.jpg?t=1790290043",
+    "gameRankScore": 84
   },
   {
     "id": 3,
@@ -224,7 +218,8 @@ const games = [
         "storage": "85 GB SSD space"
       }
     },
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1765387725"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg?t=1765387725",
+    "gameRankScore": 85
   },
   {
     "id": 4,
@@ -294,7 +289,8 @@ const games = [
         "storage": "150 GB SSD space"
       }
     },
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1759502961"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1174180/header.jpg?t=1759502961",
+    "gameRankScore": 85
   },
   {
     "id": 5,
@@ -367,7 +363,8 @@ const games = [
         "storage": "50 GB SSD space"
       }
     },
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/e8afc4252e3fee8ed2525ab2fd7675cca39aa38d/header_alt_assets_1.jpg?t=1790845156"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/292030/49e4b8a02a3a3790886acf86ef0a6344e1fc9e63/header_alt_assets_1_czech.jpg?t=1790845156",
+    "gameRankScore": 84
   },
   {
     "id": 6,
@@ -440,7 +437,8 @@ const games = [
         "storage": "70 GB NVMe SSD"
       }
     },
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/e9047d8ec47ae3d94bb8b464fb0fc9e9972b4ac7/header.jpg?t=1784714077"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1091500/e9047d8ec47ae3d94bb8b464fb0fc9e9972b4ac7/header.jpg?t=1784714077",
+    "gameRankScore": 79
   },
   {
     "id": 7,
@@ -510,14 +508,15 @@ const games = [
         "storage": "150 GB SSD space"
       }
     },
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/48a2fcbda8565bb45025e98fd8ebde8a7203f6a0/header.jpg?t=1777363040"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1086940/48a2fcbda8565bb45025e98fd8ebde8a7203f6a0/header.jpg?t=1777363040",
+    "gameRankScore": 89
   },
   {
     "id": 8,
     "name": "The Legend of Zelda: Tears of the Kingdom",
     "slug": "the-legend-of-zelda-tears-of-the-kingdom",
-    "coverImage": "https://media.rawg.io/media/games/5ec/5ecac83024ec31b5b304e01f2d665559.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/762/7629b398863f91572c57eb3c5f5fb8cf.jpg",
+    "coverImage": "https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920&auto=format&fit=crop",
     "description": "An epic adventure awaits across the land and skies of Hyrule. Harness Link’s powerful new abilities to build creative vehicles, fuse weapons, and fight back against the malevolent forces threatening the kingdom.",
     "releaseDate": "2023-05-12",
     "releaseStatus": "Released",
@@ -556,19 +555,20 @@ const games = [
     "officialWebsite": "https://www.zelda.com/tears-of-the-kingdom",
     "trailer": "https://www.youtube.com/watch?v=uHGShqcAHlQ",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/762/7629b398863f91572c57eb3c5f5fb8cf.jpg",
-      "https://media.rawg.io/media/screenshots/9e9/9e9db6777c223c3fe796ceea03ad6f95.jpg",
-      "https://media.rawg.io/media/screenshots/f63/f63a833503f848cbca1965bb742918df.jpg",
-      "https://media.rawg.io/media/screenshots/c5f/c5f850d96d99ef824a737f5b4df29c3d.jpg"
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1578632767115-351597cf2477?q=80&w=1920&auto=format&fit=crop"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/5ec/5ecac83024ec31b5b304e01f2d665559.jpg"
+    "thumbnailImage": "https://upload.wikimedia.org/wikipedia/en/f/fb/The_Legend_of_Zelda_Tears_of_the_Kingdom_cover.jpg",
+    "gameRankScore": 87
   },
   {
     "id": 9,
     "name": "Super Mario Odyssey",
     "slug": "super-mario-odyssey",
-    "coverImage": "https://media.rawg.io/media/games/e88/e88373d49ec233827ecf0e74b8fb4e0b.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/003/003d7c57ef228b3cf17d59855590a218.jpg",
+    "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1m5a.png",
+    "backgroundImage": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1920&auto=format&fit=crop",
     "description": "Embark on a massive, globe-trotting 3D adventure with Mario and his new ally Cappy! Collect Power Moons and rescue Princess Peach from Bowser’s wedding plans across creative sandboxes.",
     "releaseDate": "2017-10-27",
     "releaseStatus": "Released",
@@ -603,12 +603,13 @@ const games = [
     "ageRating": "ESRB: Everyone 10+",
     "officialWebsite": "https://supermario.nintendo.com",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/003/003d7c57ef228b3cf17d59855590a218.jpg",
-      "https://media.rawg.io/media/screenshots/599/599a0933cb6ef8e137119e7e721d23aa.jpg",
-      "https://media.rawg.io/media/screenshots/d5c/d5cf9a60e0a514d339243451737e41ef.jpg",
-      "https://media.rawg.io/media/screenshots/c4f/c4f2bbcfcf60d3d37c8670bf67995f51.jpg"
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/e88/e88373d49ec233827ecf0e74b8fb4e0b.jpg"
+    "thumbnailImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1m5a.png",
+    "gameRankScore": 84
   },
   {
     "id": 10,
@@ -662,14 +663,15 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_7cbcd6847cac4d2d42f496954d0df715c6af0b3a.1920x1080.jpg?t=1776465233",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/ss_c6240e5611e6aa1c2219dbf778f79b2b5244d912.1920x1080.jpg?t=1776465233"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg?t=1776465233"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg?t=1776465233",
+    "gameRankScore": 84
   },
   {
     "id": 11,
     "name": "Marvel's Spider-Man 2",
     "slug": "marvels-spider-man-2",
-    "coverImage": "https://media.rawg.io/media/games/047/04702170cc72186987f2ffb9148d6139.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/5bf/5bf7d6eeab4743ec11b6da4d6ab3aaec.jpg",
+    "coverImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/library_600x900_2x.jpg",
+    "backgroundImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/library_hero.jpg",
     "description": "Spider-Men Peter Parker and Miles Morales face the ultimate test of strength inside and outside the mask as they fight to save the city, each other and the ones they love from monstrous Venom and the dangerous Symbiote threat.",
     "releaseDate": "2023-10-20",
     "releaseStatus": "Released",
@@ -706,12 +708,15 @@ const games = [
     "ageRating": "ESRB: Teen",
     "officialWebsite": "https://insomniac.games/game/marvels-spider-man-2",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/5bf/5bf7d6eeab4743ec11b6da4d6ab3aaec.jpg",
-      "https://media.rawg.io/media/screenshots/02c/02c38ce027bb39fe753966fb9c5b2a3a.jpg",
-      "https://media.rawg.io/media/screenshots/bdc/bdc68c34c44933a3c9489f41d9ef1154.jpg",
-      "https://media.rawg.io/media/screenshots/4fe/4feb800e4708ff82a3962d3a37ea818d.jpg"
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/ss_e4b67059ddedaeebd91fce113745f3eb99736f56.1920x1080.jpg?t=1763569811",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/ss_b4be948946130b7e140be82f24f1f9ccefae9117.1920x1080.jpg?t=1763569811",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/ss_f4140ba12158b812d9c1adc86c484d8e84b92e92.1920x1080.jpg?t=1763569811",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/ss_7ef8bc176702470fdc73f62f8e537c3912e70444.1920x1080.jpg?t=1763569811",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/ss_474a7ffe98998719c22025cc99da1f45dfca025e.1920x1080.jpg?t=1763569811",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/ss_aa8346cf207a1e114c5f9e7f6c3086c5dc9c3050.1920x1080.jpg?t=1763569811"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/047/04702170cc72186987f2ffb9148d6139.jpg"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2651280/header.jpg?t=1763569811",
+    "gameRankScore": 84
   },
   {
     "id": 12,
@@ -762,14 +767,15 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_f366f20f4fb699f6735581e04c7c45a1ef7bd1b8.1920x1080.jpg?t=1779901265",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/ss_47e14ed55ac7f1bf9266b2cd5b3e4d9eae0ca54c.1920x1080.jpg?t=1779901265"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/91ac334a2c137d08968ccc0bc474a02579602100/header.jpg?t=1779901265"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1145350/91ac334a2c137d08968ccc0bc474a02579602100/header.jpg?t=1779901265",
+    "gameRankScore": 89
   },
   {
     "id": 13,
     "name": "Fortnite",
     "slug": "fortnite",
-    "coverImage": "https://media.rawg.io/media/games/d2c/d2c7423d64da86ab368440bc332eaab6.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/88c/88c1b3f9bfcb483189914436ae05d7b8.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/58/ac/a0/58aca06b-4dc5-d680-14c4-1f05fb3b9928/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop",
     "description": "Drop onto the island and battle to be the last player — or team — standing. Hang out with friends to watch concerts, movies, or create your own island in the biggest pop-culture gaming phenomenon.",
     "releaseDate": "2017-07-21",
     "releaseStatus": "Released",
@@ -812,19 +818,19 @@ const games = [
     "ageRating": "ESRB: Teen",
     "officialWebsite": "https://www.fortnite.com",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/88c/88c1b3f9bfcb483189914436ae05d7b8.jpg",
-      "https://media.rawg.io/media/screenshots/600/6007ecad76ca6fc8deaa12ef54f43ec8.jpg",
-      "https://media.rawg.io/media/screenshots/9d7/9d7a2fa349bb27a8dc7bbfecf8a8461b.jpg",
-      "https://media.rawg.io/media/screenshots/762/762514101e4835848529aaae173c3ee9.jpg"
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/bd/a7/e3/bda7e31a-7341-2cf8-d54f-880aec955620/EN_FNBR_42-00_C7S4_Shot_1_iOS_AppStore_Screenshot_iPhone_2868x1320.jpg/1280x720bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2a/f2/a3/2af2a36b-16e8-6977-3391-9a30364932e7/EN_FNBR_42-00_C7S4_Shot_2_iOS_AppStore_Screenshot_iPhone_2868x1320.jpg/1280x720bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2d/ea/e9/2deae962-f00f-5d8d-2bfe-e645dcc4616c/EN_FNBR_42-00_C7S4_Shot_3_iOS_AppStore_Screenshot_iPhone_2868x1320.jpg/1280x720bb.jpg"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/d2c/d2c7423d64da86ab368440bc332eaab6.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/58/ac/a0/58aca06b-4dc5-d680-14c4-1f05fb3b9928/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+    "gameRankScore": 74
   },
   {
     "id": 14,
     "name": "Grand Theft Auto VI",
     "slug": "grand-theft-auto-vi",
-    "coverImage": "https://media.rawg.io/media/games/22f/22f30ae2572c833215c2ec4df3d01309.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/a7c/a7c438f4066e52011484d0089e023192.jpg",
+    "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7ws8.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop",
     "description": "Grand Theft Auto VI heads to the state of Leonida, home to the neon-soaked streets of Vice City and beyond in the biggest, most immersive evolution of the Grand Theft Auto series yet. Follow Lucia and Jason in a modern criminal saga.",
     "releaseDate": "2026-10-15",
     "releaseStatus": "Coming Soon",
@@ -865,12 +871,12 @@ const games = [
     "officialWebsite": "https://www.rockstargames.com/VI",
     "trailer": "https://www.youtube.com/watch?v=QdBZY2fkU-0",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/a7c/a7c438f4066e52011484d0089e023192.jpg",
-      "https://media.rawg.io/media/screenshots/1dc/1dcd95033c46b95b87198ba29d6dca33.jpg",
-      "https://media.rawg.io/media/screenshots/256/25603831828f237efb9933ae38965021.jpg",
-      "https://media.rawg.io/media/screenshots/43b/43ba45cf4aa76be4608c02c462ea09e9.jpg"
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1514565131-fce0801e5785?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=1920&auto=format&fit=crop"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/22f/22f30ae2572c833215c2ec4df3d01309.jpg"
+    "thumbnailImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7ws8.jpg",
+    "gameRankScore": 98
   },
   {
     "id": 15,
@@ -927,14 +933,15 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/8e09f2b2eedd3fa9b4479dd5c26d8bdf60562478/ss_8e09f2b2eedd3fa9b4479dd5c26d8bdf60562478.1920x1080.jpg?t=1776125736",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/d907d0cc2b10b5ea4788b8d502cc27787d520c1d/ss_d907d0cc2b10b5ea4788b8d502cc27787d520c1d.1920x1080.jpg?t=1776125736"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/7983574d464e6559ac7e24275727f73a8bcca1f3/header.jpg?t=1776125736"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030300/7983574d464e6559ac7e24275727f73a8bcca1f3/header.jpg?t=1776125736",
+    "gameRankScore": 96
   },
   {
     "id": 16,
     "name": "DOOM: The Dark Ages",
     "slug": "doom-the-dark-ages",
-    "coverImage": "https://media.rawg.io/media/games/7cf/7cfc2a0468a35607b38cb7ffc0a52df2.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/923/923058866e4a29a8a7fe7159c5d13a96.jpg",
+    "coverImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/library_600x900_2x.jpg",
+    "backgroundImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/library_hero.jpg",
     "description": "DOOM: The Dark Ages is the prequel to the critically acclaimed DOOM (2016) and DOOM Eternal. Witness the origin story of the DOOM Slayer’s rage in a cinematic medieval war against Hell equipped with a Shield Saw and Flail.",
     "releaseDate": "2025-05-15",
     "releaseStatus": "Coming Soon",
@@ -974,19 +981,22 @@ const games = [
     "officialWebsite": "https://bethesda.net/game/doom",
     "trailer": "https://www.youtube.com/watch?v=4txX9g7b-kE",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/923/923058866e4a29a8a7fe7159c5d13a96.jpg",
-      "https://media.rawg.io/media/screenshots/2c4/2c4d924d5462cf1b54a6521bc279fb04.jpg",
-      "https://media.rawg.io/media/screenshots/59f/59f8c691f18fc43cfc0ec8eb7c22ee3a.jpg",
-      "https://media.rawg.io/media/screenshots/1ac/1ac19f174714b23323bc57adc8e76ac6.jpg"
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/ss_ba66d42e3d1ea78e5b085682484210b390eb9ccc.1920x1080.jpg?t=1789406231",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/ss_bbb5ead71b9321c6ba9bfc8941917136f9961fdb.1920x1080.jpg?t=1789406231",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/ss_3c894cfd44c1c12a539d2dbcb93cbecfbdbbb383.1920x1080.jpg?t=1789406231",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/ss_18de5ba08a6468e26bdc7a991fb00d3383e36d0c.1920x1080.jpg?t=1789406231",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/ss_c61b08d39d4af0b19241f85b7f1962674e5b570f.1920x1080.jpg?t=1789406231",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/ss_4b9b93f38fb65007e7a6410264b2f7fdac0d3586.1920x1080.jpg?t=1789406231"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/7cf/7cfc2a0468a35607b38cb7ffc0a52df2.jpg"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3017860/header.jpg?t=1789406231",
+    "gameRankScore": 92
   },
   {
     "id": 17,
     "name": "Metroid Prime 4: Beyond",
     "slug": "metroid-prime-4-beyond",
-    "coverImage": "https://media.rawg.io/media/games/390/3900fecfa90dfd0a927fa1c480111f18.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/03c/03c513200ff7e2f98647dc51372e61df.jpg",
+    "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co8kbf.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop",
     "description": "Samus Aran returns in an all-new first-person sci-fi adventure spanning unexplored alien galaxies. Face Sylux and uncover mysteries threatening the Galactic Federation.",
     "releaseDate": "2025-11-20",
     "releaseStatus": "Coming Soon",
@@ -1025,19 +1035,20 @@ const games = [
     "officialWebsite": "https://www.nintendo.com",
     "trailer": "https://www.youtube.com/watch?v=ZfXjG9a-6Y4",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/03c/03c513200ff7e2f98647dc51372e61df.jpg",
-      "https://media.rawg.io/media/screenshots/762/7629b398863f91572c57eb3c5f5fb8cf.jpg",
-      "https://media.rawg.io/media/screenshots/9e9/9e9db6777c223c3fe796ceea03ad6f95.jpg",
-      "https://media.rawg.io/media/screenshots/f63/f63a833503f848cbca1965bb742918df.jpg"
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1920&auto=format&fit=crop"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/390/3900fecfa90dfd0a927fa1c480111f18.jpg"
+    "thumbnailImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co8kbf.jpg",
+    "gameRankScore": 92
   },
   {
     "id": 18,
     "name": "Death Stranding 2: On the Beach",
     "slug": "death-stranding-2-on-the-beach",
-    "coverImage": "https://media.rawg.io/media/games/28b/28ba730cfec9e755fe1d454fa3fb6c6f.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/2c4/2c4d924d5462cf1b54a6521bc279fb04.jpg",
+    "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7ubx.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop",
     "description": "Embark on an inspiring mission of human connection beyond the UCA. Sam—with companions by his side—sets out on a new journey to save humanity from extinction.",
     "releaseDate": "2025-09-18",
     "releaseStatus": "Coming Soon",
@@ -1074,12 +1085,15 @@ const games = [
     "ageRating": "ESRB: Mature 17+",
     "officialWebsite": "https://www.kojimaproductions.jp",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/2c4/2c4d924d5462cf1b54a6521bc279fb04.jpg",
-      "https://media.rawg.io/media/screenshots/59f/59f8c691f18fc43cfc0ec8eb7c22ee3a.jpg",
-      "https://media.rawg.io/media/screenshots/1ac/1ac19f174714b23323bc57adc8e76ac6.jpg",
-      "https://media.rawg.io/media/screenshots/0aa/0aa06d9d023f0340c268046b07d6c6e7.jpg"
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/702c9ed8dc25f26be07539cd5cfb9f08046d210a/ss_702c9ed8dc25f26be07539cd5cfb9f08046d210a.1920x1080.jpg?t=1774022345",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/9732214efafbe68e6618806556cd448578217a04/ss_9732214efafbe68e6618806556cd448578217a04.1920x1080.jpg?t=1774022345",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/1a78ae746ca46713e3c2cb2e5c4f197fea72fe50/ss_1a78ae746ca46713e3c2cb2e5c4f197fea72fe50.1920x1080.jpg?t=1774022345",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/f8c42434fe7d51fdb3f039ca06a99f5f18518a31/ss_f8c42434fe7d51fdb3f039ca06a99f5f18518a31.1920x1080.jpg?t=1774022345",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/dc15199b7f71ce4279be8002e9e5c508ecde83bc/ss_dc15199b7f71ce4279be8002e9e5c508ecde83bc.1920x1080.jpg?t=1774022345",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/346a0dac8c589d8df5b208e5574cc75ab3d35fdf/ss_346a0dac8c589d8df5b208e5574cc75ab3d35fdf.1920x1080.jpg?t=1774022345"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/28b/28ba730cfec9e755fe1d454fa3fb6c6f.jpg"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3280350/6270c77b0729e2df0a17d660286eeddfd9169386/header.jpg?t=1774022345",
+    "gameRankScore": 90
   },
   {
     "id": 19,
@@ -1131,14 +1145,15 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_fa2361b39da8e8bde3cbc282879de97f2f3e57af.1920x1080.jpg?t=1787549555",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/ss_c1dd8c8af4e0fd3bb233888b4155d94f7988debd.1920x1080.jpg?t=1787549555"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/header.jpg?t=1787549555"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2246340/header.jpg?t=1787549555",
+    "gameRankScore": 91
   },
   {
     "id": 20,
     "name": "The Witcher 4 (Polaris)",
     "slug": "the-witcher-4-polaris",
-    "coverImage": "https://media.rawg.io/media/games/569/5699479b4a4d67362bb2b451c8cc9300.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/1ac/1ac19f174714b23323bc57adc8e76ac6.jpg",
+    "coverImage": "https://public.cdn.cdpr.app/thewitcher/website/build/2906319531-9f43b68a/_next/static/media/1920.3igs7guwxpfup.jpg",
+    "backgroundImage": "https://public.cdn.cdpr.app/thewitcher/website/build/2906319531-9f43b68a/_next/static/media/1920.3igs7guwxpfup.jpg",
     "description": "A new saga begins for The Witcher franchise, built from the ground up on Unreal Engine 5. Enter a new era of monster hunting in the Continent.",
     "releaseDate": "2027-05-14",
     "releaseStatus": "Announced",
@@ -1176,12 +1191,13 @@ const games = [
     "ageRating": "ESRB: Mature 17+",
     "officialWebsite": "https://thewitcher.com",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/1ac/1ac19f174714b23323bc57adc8e76ac6.jpg",
-      "https://media.rawg.io/media/screenshots/2c4/2c4d924d5462cf1b54a6521bc279fb04.jpg",
-      "https://media.rawg.io/media/screenshots/59f/59f8c691f18fc43cfc0ec8eb7c22ee3a.jpg",
-      "https://media.rawg.io/media/screenshots/923/923058866e4a29a8a7fe7159c5d13a96.jpg"
+      "https://public.cdn.cdpr.app/thewitcher/website/build/2906319531-9f43b68a/_next/static/media/1920.3igs7guwxpfup.jpg",
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1920&auto=format&fit=crop"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/569/5699479b4a4d67362bb2b451c8cc9300.jpg"
+    "thumbnailImage": "https://public.cdn.cdpr.app/thewitcher/website/build/2906319531-9f43b68a/_next/static/media/1920.3igs7guwxpfup.jpg",
+    "gameRankScore": 96
   },
   {
     "id": 21,
@@ -1236,7 +1252,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/ss_bd76bd88bc5334ee56ae3d5f0d8dec4455e8e3b8.1920x1080.jpg?t=1776125684",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/ss_33a645903d6dd9beec39f272a3daf57174a6cc26.1920x1080.jpg?t=1776125684"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/3c3489495136b26b34f8a9543c7f5645b99d388c/header.jpg?t=1776125684"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/367520/3c3489495136b26b34f8a9543c7f5645b99d388c/header.jpg?t=1776125684",
+    "gameRankScore": 83
   },
   {
     "id": 22,
@@ -1296,7 +1313,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/ss_782374517c1792debd74d24856203b876eba3a5d.1920x1080.jpg?t=1769844435",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/ss_04dd9f0a5773b686a452ba480b951f83b3ed5061.1920x1080.jpg?t=1769844435"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg?t=1769844435"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/105600/header.jpg?t=1769844435",
+    "gameRankScore": 81
   },
   {
     "id": 23,
@@ -1357,14 +1375,15 @@ const games = [
         "storage": "85 GB available space"
       }
     },
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/162664aa5da85f418105350c5d67ca565f6c3713/header.jpg?t=1789251637"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/162664aa5da85f418105350c5d67ca565f6c3713/header.jpg?t=1789251637",
+    "gameRankScore": 78
   },
   {
     "id": 24,
     "name": "Valorant",
     "slug": "valorant",
-    "coverImage": "https://media.rawg.io/media/games/0f5/0f5f7a3da44e05b7623127a808d64779.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/957/957c7d1e847c21e7d0e408ec21c17ee1.jpg",
+    "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2mvt.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop",
     "description": "A 5v5 character-based tactical shooter where precise gunplay meets unique agent abilities. One team attacks, one defends across intense round-based matches.",
     "releaseDate": "2020-06-02",
     "releaseStatus": "Released",
@@ -1402,12 +1421,13 @@ const games = [
     "ageRating": "ESRB: Teen",
     "officialWebsite": "https://playvalorant.com",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/957/957c7d1e847c21e7d0e408ec21c17ee1.jpg",
-      "https://media.rawg.io/media/screenshots/5bf/5bf7d6eeab4743ec11b6da4d6ab3aaec.jpg",
-      "https://media.rawg.io/media/screenshots/02c/02c38ce027bb39fe753966fb9c5b2a3a.jpg",
-      "https://media.rawg.io/media/screenshots/88c/88c1b3f9bfcb483189914436ae05d7b8.jpg"
+      "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=1920&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1920&auto=format&fit=crop"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/0f5/0f5f7a3da44e05b7623127a808d64779.jpg"
+    "thumbnailImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2mvt.jpg",
+    "gameRankScore": 75
   },
   {
     "id": 25,
@@ -1462,14 +1482,15 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/4a30ba1dd184e8ebdbab3814ea3726008647ea17/ss_4a30ba1dd184e8ebdbab3814ea3726008647ea17.1920x1080.jpg?t=1790164440",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/f880e64654baad384f3afb9e4b0004e411770241/ss_f880e64654baad384f3afb9e4b0004e411770241.1920x1080.jpg?t=1790164440"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/60fcaedb88ccf94df30281533d828b86c6ffb9b6/header_alt_assets_5.jpg?t=1790164440"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1172470/60fcaedb88ccf94df30281533d828b86c6ffb9b6/header_alt_assets_5.jpg?t=1790164440",
+    "gameRankScore": 78
   },
   {
     "id": 26,
     "name": "Genshin Impact",
     "slug": "genshin-impact",
-    "coverImage": "https://media.rawg.io/media/games/d1f/d1f86641e62686f0aa67434e350523e1.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/599/5998a13cb09fbe7982299da7863cbff8.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5c/e2/13/5ce21317-a08a-24ac-cc5f-2b25a4d71fa6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1920&auto=format&fit=crop",
     "description": "Step into Teyvat, a vast world teeming with life and flowing with elemental energy. You and your sibling arrived here from another world. Separated by an unknown god, embark on an epic journey across seven nations.",
     "releaseDate": "2020-09-28",
     "releaseStatus": "Released",
@@ -1516,14 +1537,15 @@ const games = [
       "https://media.rawg.io/media/screenshots/762/7629b398863f91572c57eb3c5f5fb8cf.jpg",
       "https://media.rawg.io/media/screenshots/9e9/9e9db6777c223c3fe796ceea03ad6f95.jpg"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/d1f/d1f86641e62686f0aa67434e350523e1.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5c/e2/13/5ce21317-a08a-24ac-cc5f-2b25a4d71fa6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+    "gameRankScore": 77
   },
   {
     "id": 27,
     "name": "Honkai: Star Rail",
     "slug": "honkai-star-rail",
-    "coverImage": "https://media.rawg.io/media/games/9b1/9b1b7774ba713eb731f24cd9a3cb71c7.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/882/8824141d4f24ef3b174246fe136692aa.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/fd/65/dc/fd65dc18-c4b6-7b64-8266-a423f3f113e0/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1920&auto=format&fit=crop",
     "description": "Hop aboard the Astral Express and experience the galaxy’s infinite wonders filled with adventure and thrills. Meet new companions across various worlds and resolve Stellaron crises with tactical turn-based combat.",
     "releaseDate": "2023-04-26",
     "releaseStatus": "Released",
@@ -1568,7 +1590,8 @@ const games = [
       "https://media.rawg.io/media/screenshots/bdc/bdc68c34c44933a3c9489f41d9ef1154.jpg",
       "https://media.rawg.io/media/screenshots/4fe/4feb800e4708ff82a3962d3a37ea818d.jpg"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/9b1/9b1b7774ba713eb731f24cd9a3cb71c7.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/fd/65/dc/fd65dc18-c4b6-7b64-8266-a423f3f113e0/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "gameRankScore": 78
   },
   {
     "id": 28,
@@ -1620,7 +1643,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/ss_3654a5988db68f9b47740f9f6a9299682c365599.1920x1080.jpg?t=1788546569",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/ss_0bc32360d32b21abdf889422385cd753862dd73e.1920x1080.jpg?t=1788546569"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/header.jpg?t=1788546569"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1551360/header.jpg?t=1788546569",
+    "gameRankScore": 81
   },
   {
     "id": 29,
@@ -1674,7 +1698,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/ss_0596bac955340495562f3ff2538756ebd9a7f073.1920x1080.jpg?t=1772502922",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/ss_0554b945aafc847d55f780f7968de00aafa968a3.1920x1080.jpg?t=1772502922"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/header.jpg?t=1772502922"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2050650/header.jpg?t=1772502922",
+    "gameRankScore": 86
   },
   {
     "id": 30,
@@ -1729,7 +1754,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_10628b4a811c0a925a1433d4323f78c7017dbbe4.1920x1080.jpg?t=1786554168",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/ss_6422d297347258086b389e3d5d9c0e0c698312e4.1920x1080.jpg?t=1786554168"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1786554168"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/413150/header.jpg?t=1786554168",
+    "gameRankScore": 82
   },
   {
     "id": 31,
@@ -1781,7 +1807,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/374320/ss_fe1dc6761a9004aa39c2e6e62181593b7263edf9.1920x1080.jpg?t=1748630784",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/374320/ss_27397db724cfd5648655c1056ff5d184147a4c50.1920x1080.jpg?t=1748630784"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/374320/header.jpg?t=1748630784"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/374320/header.jpg?t=1748630784",
+    "gameRankScore": 82
   },
   {
     "id": 32,
@@ -1833,7 +1860,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/ss_1e6f5540866a5564d65df915c22fe1e57e336a6f.1920x1080.jpg?t=1762888662",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/ss_3d6b38c382c0eafb02dc90d22f33fd292e4e5cf3.1920x1080.jpg?t=1762888662"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg?t=1762888662"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg?t=1762888662",
+    "gameRankScore": 82
   },
   {
     "id": 33,
@@ -1888,7 +1916,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/990080/ss_8e08976236d29b1897769257ac3c64e9264792a5.1920x1080.jpg?t=1790708992",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/990080/ss_d4930d675af053dc1e61a876a34fc003e85e261f.1920x1080.jpg?t=1790708992"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/990080/be2971b1023bccb04f993887d70ef4d2060262cf/header.jpg?t=1790708992"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/990080/be2971b1023bccb04f993887d70ef4d2060262cf/header.jpg?t=1790708992",
+    "gameRankScore": 81
   },
   {
     "id": 34,
@@ -1941,7 +1970,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215430/ss_63cc7ea967bf808c73129792d9ae8e3fdb2962bf.1920x1080.jpg?t=1763409398",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215430/ss_b94e296457324be29466facc1fd93a91b6189a9b.1920x1080.jpg?t=1763409398"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215430/header.jpg?t=1763409398"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215430/header.jpg?t=1763409398",
+    "gameRankScore": 80
   },
   {
     "id": 35,
@@ -1993,7 +2023,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1888930/ss_3bed642215856b863799884f6f11671a1ef014d4.1920x1080.jpg?t=1750959031",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1888930/ss_a80060b89b2c81121c2d7a3fc2a3b13ddc18a0a6.1920x1080.jpg?t=1750959031"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1888930/header.jpg?t=1750959031"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1888930/header.jpg?t=1750959031",
+    "gameRankScore": 80
   },
   {
     "id": 36,
@@ -2046,7 +2077,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_ed46aaa9ed94dd6f35a703070f8df16cee5aef61.1920x1080.jpg?t=1789611360",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/ss_10191fb5ab48cee99d7a43e636db9202938f143e.1920x1080.jpg?t=1789611360"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/header.jpg?t=1789611360"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1364780/header.jpg?t=1789611360",
+    "gameRankScore": 84
   },
   {
     "id": 37,
@@ -2090,14 +2122,15 @@ const games = [
     "ageRating": "ESRB: Teen",
     "officialWebsite": "https://tekken.com",
     "screenshots": [
-      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_3eacb57529bd16e5c2fa52f2d23e73e141da0185.1920x1080.jpg?t=1787180720",
-      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_817526cd3510af6d4f437361f9ec3914519e1f38.1920x1080.jpg?t=1787180720",
-      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_d6394dc99291795e2e67674be23f088f6fb7081a.1920x1080.jpg?t=1787180720",
-      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_f0af6cca390980e43ed467be5876e0f8e8bb2901.1920x1080.jpg?t=1787180720",
-      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_e2ef7c9f971027407a6d5bf19743bb090b57bb08.1920x1080.jpg?t=1787180720",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_62e6ec252bc1a641e8e42dba07f23631d5da85e6.1920x1080.jpg?t=1787180720",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_99dabe34abc0f92adc39d7099908c9540be7eb3f.1920x1080.jpg?t=1787180720",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_bbd38a5fe748ec966cbc85ffcd4931f0f2da8ffd.1920x1080.jpg?t=1787180720",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_7c55021d3ba8e4f14c6d9dbea9f19d9b7665d5f0.1920x1080.jpg?t=1787180720",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_3128df5768cf9fe7ea7b21096cddaf07279ba0bd.1920x1080.jpg?t=1787180720",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/ss_5115ee8e47dda957a648a1fedb5325c7b49ec898.1920x1080.jpg?t=1787180720"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/c7b0b80639fc8c7d386922f414f293ca849e8e81/header.jpg?t=1787180720"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1778820/c7b0b80639fc8c7d386922f414f293ca849e8e81/header.jpg?t=1787180720",
+    "gameRankScore": 86
   },
   {
     "id": 38,
@@ -2150,7 +2183,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/268910/ss_380296effbf1073bbedfd480e50cf246eb542b66.1920x1080.jpg?t=1709068852",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/268910/ss_aefad3850c3bc04000cbe0d620bea6807e0a0331.1920x1080.jpg?t=1709068852"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg?t=1709068852"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg?t=1709068852",
+    "gameRankScore": 81
   },
   {
     "id": 39,
@@ -2203,14 +2237,15 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/504230/ss_832ef0f27c3d6efdaa4b5d1cc896dce0999bc9e8.1920x1080.jpg?t=1714089525",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/504230/ss_1098b655a622720cfd549b104736a4eca8948100.1920x1080.jpg?t=1714089525"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/504230/header.jpg?t=1714089525"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/504230/header.jpg?t=1714089525",
+    "gameRankScore": 83
   },
   {
     "id": 40,
     "name": "Wuthering Waves",
     "slug": "wuthering-waves",
-    "coverImage": "https://media.rawg.io/media/games/7c9/7c9f807f35bbf1bb5723b7e7c813d94d.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/599/5998a13cb09fbe7982299da7863cbff8.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/07/06/3f/07063f40-1a99-bb82-4a2c-cafa1e145d1d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3513350/library_hero.jpg",
     "description": "A story-rich open-world action RPG with a high degree of freedom. You awake from your slumber as Rover, joined by a vibrant cast of Resonators on a journey to reclaim your lost memories across the post-lamenting world.",
     "releaseDate": "2024-05-22",
     "releaseStatus": "Released",
@@ -2250,19 +2285,22 @@ const games = [
     "ageRating": "ESRB: Teen",
     "officialWebsite": "https://wutheringwaves.kurogames.com",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/599/5998a13cb09fbe7982299da7863cbff8.jpg",
-      "https://media.rawg.io/media/screenshots/882/8824141d4f24ef3b174246fe136692aa.jpg",
-      "https://media.rawg.io/media/screenshots/003/003d7c57ef228b3cf17d59855590a218.jpg",
-      "https://media.rawg.io/media/screenshots/762/7629b398863f91572c57eb3c5f5fb8cf.jpg"
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3513350/75877bf06db7938dd0c2001c31cc5700d1d1e283/ss_75877bf06db7938dd0c2001c31cc5700d1d1e283.1920x1080.jpg?t=1790713386",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3513350/2da248d79968ee225124d4b86aad1df4a72d461a/ss_2da248d79968ee225124d4b86aad1df4a72d461a.1920x1080.jpg?t=1790713386",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3513350/4fe05ac8b631fa5f5b421d8548fbde00f7aa2871/ss_4fe05ac8b631fa5f5b421d8548fbde00f7aa2871.1920x1080.jpg?t=1790713386",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3513350/50cd726b0f761978a73efa0966b0d8003e664cc4/ss_50cd726b0f761978a73efa0966b0d8003e664cc4.1920x1080.jpg?t=1790713386",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3513350/b8081bc27fea0dc0ff4cc7e365f7fbbba7e59328/ss_b8081bc27fea0dc0ff4cc7e365f7fbbba7e59328.1920x1080.jpg?t=1790713386",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3513350/f43f1dc685183c3e58545c5878ed6296658478e4/ss_f43f1dc685183c3e58545c5878ed6296658478e4.1920x1080.jpg?t=1790713386"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/7c9/7c9f807f35bbf1bb5723b7e7c813d94d.jpg"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3513350/fb969539fb0373bd5ee07c767bf9dafa4afae5c3/header.jpg?t=1790713386",
+    "gameRankScore": 82
   },
   {
     "id": 41,
     "name": "Clash of Clans",
     "slug": "clash-of-clans",
-    "coverImage": "https://media.rawg.io/media/games/1a7/1a74d28434316d414a3861c8a6fcf4a3.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/d5c/d5cf9a60e0a514d339243451737e41ef.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ba/b9/3a/bab93a90-921d-2caf-32a6-cde63f6006d4/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop",
     "description": "Join millions of players worldwide as you build your village, raise a clan, and compete in epic Clan Wars with Barbarians, Wizards, and other unique troops in this iconic strategy classic.",
     "releaseDate": "2012-08-02",
     "releaseStatus": "Released",
@@ -2303,14 +2341,15 @@ const games = [
       "https://media.rawg.io/media/screenshots/599/599a0933cb6ef8e137119e7e721d23aa.jpg",
       "https://media.rawg.io/media/screenshots/003/003d7c57ef228b3cf17d59855590a218.jpg"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/1a7/1a74d28434316d414a3861c8a6fcf4a3.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ba/b9/3a/bab93a90-921d-2caf-32a6-cde63f6006d4/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "gameRankScore": 73
   },
   {
     "id": 42,
     "name": "Brawl Stars",
     "slug": "brawl-stars",
-    "coverImage": "https://media.rawg.io/media/games/89a/89a5840d42646ae1a8e2cb92a2a0d922.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/c4f/c4f2bbcfcf60d3d37c8670bf67995f51.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ee/a7/00/eea700d3-6cec-f063-b86c-3dfd251c95bd/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1920&auto=format&fit=crop",
     "description": "Fast-paced 3v3 multiplayer and battle royale made for mobile! Play with friends or solo across a variety of game modes in under three minutes with unique Brawlers.",
     "releaseDate": "2018-12-12",
     "releaseStatus": "Released",
@@ -2352,14 +2391,15 @@ const games = [
       "https://media.rawg.io/media/screenshots/599/599a0933cb6ef8e137119e7e721d23aa.jpg",
       "https://media.rawg.io/media/screenshots/003/003d7c57ef228b3cf17d59855590a218.jpg"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/89a/89a5840d42646ae1a8e2cb92a2a0d922.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ee/a7/00/eea700d3-6cec-f063-b86c-3dfd251c95bd/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+    "gameRankScore": 75
   },
   {
     "id": 43,
     "name": "Subway Surfers",
     "slug": "subway-surfers",
-    "coverImage": "https://media.rawg.io/media/games/d07/d07e60155b9e4a362bfcf90e4f8d9f04.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/452/452ec872da6aebf1ce7c83f9dd40fd05.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/3b/6f/c0/3b6fc01e-ca3c-8335-fedb-35bc6c01ee18/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1920&auto=format&fit=crop",
     "description": "Dash as fast as you can! Dodge the oncoming trains and help Jake, Tricky & Fresh escape from the grumpy Inspector and his dog in the most downloaded mobile runner of all time.",
     "releaseDate": "2012-05-24",
     "releaseStatus": "Released",
@@ -2400,14 +2440,15 @@ const games = [
       "https://media.rawg.io/media/screenshots/92e/92e0082c448bb957b42cefb6b876fc62.jpg",
       "https://media.rawg.io/media/screenshots/115/11579a4918e954c25607b309f7a552fd.jpg"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/d07/d07e60155b9e4a362bfcf90e4f8d9f04.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/3b/6f/c0/3b6fc01e-ca3c-8335-fedb-35bc6c01ee18/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "gameRankScore": 72
   },
   {
     "id": 44,
     "name": "Pokémon GO",
     "slug": "pokemon-go",
-    "coverImage": "https://media.rawg.io/media/games/020/020df115e5d3c829e1eb61df18f29ea6.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/762/762514101e4835848529aaae173c3ee9.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6f/ba/4f/6fba4fa7-a958-f96e-6761-7d848fd21600/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop",
     "description": "Join Trainers around the globe who are discovering Pokémon as they explore the real world around them. Catch, battle, and trade Pokémon across global community days and legendary raids.",
     "releaseDate": "2016-07-06",
     "releaseStatus": "Released",
@@ -2449,14 +2490,15 @@ const games = [
       "https://media.rawg.io/media/screenshots/600/6007ecad76ca6fc8deaa12ef54f43ec8.jpg",
       "https://media.rawg.io/media/screenshots/9d7/9d7a2fa349bb27a8dc7bbfecf8a8461b.jpg"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/020/020df115e5d3c829e1eb61df18f29ea6.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6f/ba/4f/6fba4fa7-a958-f96e-6761-7d848fd21600/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "gameRankScore": 69
   },
   {
     "id": 45,
     "name": "League of Legends",
     "slug": "league-of-legends",
-    "coverImage": "https://media.rawg.io/media/games/78b/78bc81e247fc7e1b8da1ce68025e50c4.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/1fd/1fd874744d081f9a2d88c222ffc324c4.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/70/e1/e9/70e1e94a-6d1e-2dd1-3375-75b43d8f71a5/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920&auto=format&fit=crop",
     "description": "League of Legends is a team-based strategy game where two teams of five powerful champions face off to destroy the other’s Nexus across Summoner’s Rift.",
     "releaseDate": "2009-10-27",
     "releaseStatus": "Released",
@@ -2492,12 +2534,12 @@ const games = [
     "ageRating": "ESRB: Teen",
     "officialWebsite": "https://www.leagueoflegends.com",
     "screenshots": [
-      "https://media.rawg.io/media/screenshots/1fd/1fd874744d081f9a2d88c222ffc324c4.jpg",
-      "https://media.rawg.io/media/screenshots/957/957c7d1e847c21e7d0e408ec21c17ee1.jpg",
-      "https://media.rawg.io/media/screenshots/5bf/5bf7d6eeab4743ec11b6da4d6ab3aaec.jpg",
-      "https://media.rawg.io/media/screenshots/02c/02c38ce027bb39fe753966fb9c5b2a3a.jpg"
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/7f/a3/e0/7fa3e0fa-db16-3322-248c-c7fd067d39af/6D_ASO_Screenshots-Hwei-2208-1242.jpg/1280x720bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/5e/be/12/5ebe124d-0516-c8b0-9537-9e23a4bac4f9/6D_ASO_Screenshots-Rank_Millo-2208-1242.jpg/1280x720bb.jpg",
+      "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/87/3b/3e/873b3ee7-0e9b-4233-0a86-8a635f94b40a/Copy_of_1.2208-1242-Jinx_.jpg/1280x720bb.jpg"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/78b/78bc81e247fc7e1b8da1ce68025e50c4.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/70/e1/e9/70e1e94a-6d1e-2dd1-3375-75b43d8f71a5/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "gameRankScore": 73
   },
   {
     "id": 46,
@@ -2547,7 +2589,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_27b6345f22243bd6b885cc64c5cda74e4bd9c3e8.1920x1080.jpg?t=1769535998",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/ss_b33a65678dc71cc98df4890e22a89601ee56a918.1920x1080.jpg?t=1769535998"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1769535998"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/570/header.jpg?t=1769535998",
+    "gameRankScore": 79
   },
   {
     "id": 47,
@@ -2603,7 +2646,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252950/94c1a6af68435a14550fa4e40e6f98c3e44d29a4/ss_94c1a6af68435a14550fa4e40e6f98c3e44d29a4.1920x1080.jpg?t=1791210513",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252950/e98f1fa5f2ac54b30c010c34b238e882847fa45b/ss_e98f1fa5f2ac54b30c010c34b238e882847fa45b.1920x1080.jpg?t=1791210513"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252950/3abd9ab079c8896a4762dbe34a853d89b7f704df/header_alt_assets_17.jpg?t=1791210513"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/252950/3abd9ab079c8896a4762dbe34a853d89b7f704df/header_alt_assets_17.jpg?t=1791210513",
+    "gameRankScore": 78
   },
   {
     "id": 48,
@@ -2658,7 +2702,8 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/78e99c6da684734a84fcd69aff1baa7b5fe996f6/ss_78e99c6da684734a84fcd69aff1baa7b5fe996f6.1920x1080.jpg?t=1788890347",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/ec6de0364a1014e97ab05a7cad9f187be0bd494e/ss_ec6de0364a1014e97ab05a7cad9f187be0bd494e.1920x1080.jpg?t=1788890347"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/7baa151c768868f1fe1d3aeea2467fa1a35fb531/header_alt_assets_22.jpg?t=1788890347"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/7baa151c768868f1fe1d3aeea2467fa1a35fb531/header_alt_assets_22.jpg?t=1788890347",
+    "gameRankScore": 72
   },
   {
     "id": 49,
@@ -2712,14 +2757,15 @@ const games = [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2195250/ss_855738ea72e6f90ee0e0b0cedba55848423389e1.1920x1080.jpg?t=1752167366",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2195250/ss_0f175ec10150f890fe3beb3c8dde3abc2b4c1d62.1920x1080.jpg?t=1752167366"
     ],
-    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2195250/header.jpg?t=1752167366"
+    "thumbnailImage": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2195250/header.jpg?t=1752167366",
+    "gameRankScore": 73
   },
   {
     "id": 50,
     "name": "Roblox",
     "slug": "roblox",
-    "coverImage": "https://media.rawg.io/media/games/35b/35b47c4d7976da33455d3d4d1ec16410.jpg",
-    "backgroundImage": "https://media.rawg.io/media/screenshots/1ac/1ac19f174714b23323bc57adc8e76ac6.jpg",
+    "coverImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/35/3e/ff/353eff73-c6d3-9aff-4ba5-a0a6e3afa563/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+    "backgroundImage": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1920&auto=format&fit=crop",
     "description": "Roblox is the ultimate virtual universe that lets you create, share experiences with friends, and be anything you can imagine with millions of immersive digital creations.",
     "releaseDate": "2006-09-01",
     "releaseStatus": "Released",
@@ -2765,41 +2811,7 @@ const games = [
       "https://media.rawg.io/media/screenshots/59f/59f8c691f18fc43cfc0ec8eb7c22ee3a.jpg",
       "https://media.rawg.io/media/screenshots/0aa/0aa06d9d023f0340c268046b07d6c6e7.jpg"
     ],
-    "thumbnailImage": "https://media.rawg.io/media/games/35b/35b47c4d7976da33455d3d4d1ec16410.jpg"
+    "thumbnailImage": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/35/3e/ff/353eff73-c6d3-9aff-4ba5-a0a6e3afa563/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+    "gameRankScore": 73
   }
 ];
-
-// Calculate transparent GameRank algorithm
-const gamesWithScore = games.map((game) => {
-  const criticComponent = (game.criticScore / 100) * 40;
-  const playerComponent = (game.playerScore / 10) * 30;
-  const popularityComponent = (game.popularity / 100) * 20;
-
-  const releaseYear = new Date(game.releaseDate).getFullYear();
-  const age = new Date().getFullYear() - releaseYear;
-  let recencyBonus = 0;
-  if (age <= 0) recencyBonus = 10;
-  else if (age === 1) recencyBonus = 8;
-  else if (age === 2) recencyBonus = 5;
-  else if (age === 3) recencyBonus = 3;
-
-  const raw = criticComponent + playerComponent + popularityComponent + recencyBonus;
-  const gameRankScore = Math.min(Math.round(raw), 99);
-
-  return {
-    ...game,
-    gameRankScore,
-  };
-});
-
-const fileContent = `// ─────────────────────────────────────────────────────────────────────────────
-// GameRank – Scalable Game Database with Verified Cover Posters & Specs
-// ─────────────────────────────────────────────────────────────────────────────
-import { GameRecord } from '@/types/database';
-
-export const SEED_GAMES: GameRecord[] = ${JSON.stringify(gamesWithScore, null, 2)};
-`;
-
-const outputPath = path.join(__dirname, '..', 'lib', 'database.ts');
-fs.writeFileSync(outputPath, fileContent, 'utf8');
-console.log('Successfully generated database with', gamesWithScore.length, 'games to', outputPath);
