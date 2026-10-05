@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Search, Menu, X, Gamepad2, TrendingUp, Trophy, Star, Scale, Calendar, Sparkles } from 'lucide-react'
+import { Search, Menu, X, Gamepad2, TrendingUp, Trophy, Star, Scale, Calendar, Sparkles, Info } from 'lucide-react'
 
 const NAV_LINKS = [
   { href: '/rankings/all-time', label: 'Top 100', icon: Trophy },
@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: '/compare', label: 'Compare', icon: Scale },
   { href: '/releases', label: 'Release Calendar', icon: Calendar },
   { href: '/ai-game-finder', label: 'AI Finder', icon: Sparkles },
+  { href: '/about', label: 'About', icon: Info },
   { href: '/search', label: 'Search', icon: Search },
 ]
 

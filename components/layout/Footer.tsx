@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Gamepad2, Github, Twitter } from 'lucide-react'
+import { Gamepad2, Github, Twitter, Instagram } from 'lucide-react'
 
 const FOOTER_LINKS = {
   Rankings: [
@@ -21,6 +21,7 @@ const FOOTER_LINKS = {
     { href: '/rankings/sports', label: 'Best Sports' },
   ],
   Discover: [
+    { href: '/about', label: 'About Us (Founder)' },
     { href: '/compare', label: 'Game Comparison' },
     { href: '/releases', label: 'Release Calendar' },
     { href: '/ai-game-finder', label: 'AI Game Finder' },
@@ -47,13 +48,16 @@ export function Footer() {
               <span className="text-xl font-bold text-gradient">GameRank</span>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              The world's most comprehensive gaming rankings platform. Powered by real game data from the RAWG database.
+              The world's most comprehensive gaming rankings platform. Created by Harsh Sisodia.
             </p>
             <div className="flex items-center gap-3">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
+              <a href="https://www.instagram.com/hxrsh_s2k14" target="_blank" rel="noopener noreferrer" aria-label="Follow Harsh Sisodia on Instagram" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 text-pink-400 transition-colors">
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GameRank on GitHub" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
                 <Github className="w-4 h-4" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="GameRank on Twitter" className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
                 <Twitter className="w-4 h-4" />
               </a>
             </div>
