@@ -837,8 +837,8 @@ export const SEED_GAMES: GameRecord[] = [
     "id": 14,
     "name": "Grand Theft Auto VI",
     "slug": "grand-theft-auto-vi",
-    "coverImage": "https://images.igdb.com/igdb/image/upload/t_cover_big/co7ws8.jpg",
-    "backgroundImage": "https://www.rockstargames.com/VI/_next/static/media/hero.0q5-tr6h86ai7.jpg",
+    "coverImage": "/images/gta-6-cover.png",
+    "backgroundImage": "/images/gta-6-banner.jpg",
     "description": "Grand Theft Auto VI heads to the state of Leonida, home to the neon-soaked streets of Vice City and beyond in the biggest, most immersive evolution of the Grand Theft Auto series yet. Follow Lucia and Jason in a modern criminal saga.",
     "releaseDate": "2026-10-15",
     "releaseStatus": "Coming Soon",
@@ -879,12 +879,12 @@ export const SEED_GAMES: GameRecord[] = [
     "officialWebsite": "https://www.rockstargames.com/VI",
     "trailer": "https://www.youtube.com/watch?v=QdBZY2fkU-0",
     "screenshots": [
-      "https://www.rockstargames.com/VI/_next/static/media/GTAVI_Official_Cover_Art_Landscape.03y6bcce9e2jr.jpg",
-      "https://www.rockstargames.com/VI/_next/static/media/GTAVI_Trailer1_poster.12x2gvspcm_3m.jpg",
-      "https://www.rockstargames.com/VI/_next/static/media/GTAVI_Trailer2_poster.0cosv-uzbpt91.jpg",
-      "https://www.rockstargames.com/VI/_next/static/media/GTAVI_An_Extended_Look_poster.0ijbsha5fo1te.jpg"
+      "/images/gta-6-banner.jpg",
+      "https://media.rawg.io/media/screenshots/598/5983ffe274a237b33e0f0452364fba78.jpg",
+      "https://media.rawg.io/media/screenshots/384/384241113cb4510774289415d7d6dba1.jpg",
+      "https://media.rawg.io/media/screenshots/4c4/4c47d5e898bda3ce131a8e73db6fe505.jpg"
     ],
-    "thumbnailImage": "https://www.rockstargames.com/VI/-/opengraph-image.jpg",
+    "thumbnailImage": "/images/gta-6-cover.png",
     "gameRankScore": 98
   },
   {
