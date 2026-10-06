@@ -23,7 +23,7 @@ const FOOTER_LINKS = {
   ],
   Discover: [
     { href: '/pc-builder', label: 'PC Builder & Planner' },
-    { href: '/about', label: 'About Us (Founder)' },
+    { href: '/about', label: 'About the Creator' },
     { href: '/compare', label: 'Game Comparison' },
     { href: '/releases', label: 'Release Calendar' },
     { href: '/ai-game-finder', label: 'AI Game Finder' },
