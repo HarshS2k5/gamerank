@@ -19,7 +19,7 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'About the Creator | PC Builder',
+  title: 'About the Creator | Harsh Sisodia | GameRank',
   description:
     'Hi! I’m Harsh Sisodia, a 12-year-old creator who enjoys technology, gaming, AI, and building interactive websites and digital projects including GameRank and Internet Time Machine.',
   openGraph: {
@@ -231,7 +231,7 @@ export default function AboutPage() {
                   GameRank
                 </h3>
                 <span className="text-xs text-gray-500 font-mono">
-                  Gaming Ranking &amp; PC Hardware Platform
+                  Worldwide Gaming Ranking &amp; Discovery Platform
                 </span>
               </div>
 
@@ -398,10 +398,10 @@ export default function AboutPage() {
       {/* 7. BOTTOM NAVIGATION CTA */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
         <div className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 text-center space-y-4">
-          <h4 className="text-lg font-bold text-white">Explore My Tools</h4>
+          <h4 className="text-lg font-bold text-white">Explore My Projects</h4>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="/pc-builder" className="btn-primary text-xs font-bold px-6 py-2.5">
-              Launch PC Builder
+            <Link href="/rankings" className="btn-primary text-xs font-bold px-6 py-2.5">
+              Explore Rankings
             </Link>
             <Link href="/" className="btn-secondary text-xs font-bold px-6 py-2.5">
               Back to GameRank

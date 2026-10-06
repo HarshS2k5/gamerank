@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { Metadata } from 'next'
 import Link from 'next/link'
-import { Sparkles, ArrowRight, Bot, Cpu } from 'lucide-react'
+import { Sparkles, ArrowRight, Bot } from 'lucide-react'
 import { HeroSection } from '@/components/home/HeroSection'
 import { GameCarousel } from '@/components/ui/GameCarousel'
 import { PlatformGrid } from '@/components/home/PlatformGrid'
@@ -62,40 +62,6 @@ export default async function HomePage() {
           games={pcGames}
           showRank={true}
         />
-
-        {/* 💻 PC Builder & Performance Planner Spotlight */}
-        <section className="relative overflow-hidden rounded-3xl border border-[#00d4ff]/30 bg-gradient-to-r from-[#0c141f] via-[#111c29] to-[#0c141f] p-8 sm:p-12 shadow-2xl">
-          <div className="absolute -right-10 -bottom-10 w-80 h-80 bg-[#00d4ff]/10 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute -left-10 -top-10 w-80 h-80 bg-[#00ff88]/10 rounded-full blur-3xl pointer-events-none" />
-          
-          <div className="relative z-10 max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="space-y-4 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 bg-[#00d4ff]/15 border border-[#00d4ff]/30 text-[#00d4ff] text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full">
-                <Cpu className="w-4 h-4" />
-                <span>TechForge PC Builder Lab</span>
-              </div>
-              
-              <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight">
-                🖥️ BUILD YOUR DREAM GAMING PC
-              </h2>
-              
-              <p className="text-gray-300 text-sm sm:text-base max-w-xl leading-relaxed">
-                Design custom PC builds with automatic socket & clearance checking, real-time FPS estimation across 50+ games, power load calculator, and side-by-side component benchmarks.
-              </p>
-            </div>
-
-            <div className="shrink-0 flex flex-col sm:flex-row items-center gap-3">
-              <Link
-                href="/pc-builder"
-                className="btn-primary text-sm sm:text-base font-bold px-8 py-3.5 flex items-center gap-2 shadow-xl shadow-[#00ff88]/20 whitespace-nowrap"
-              >
-                <Cpu className="w-4 h-4" />
-                <span>Launch PC Builder</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
 
         {/* 6. 🎮 Popular Console Games Carousel */}
         <GameCarousel
