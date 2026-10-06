@@ -21,6 +21,7 @@ const FOOTER_LINKS = {
     { href: '/rankings/sports', label: 'Best Sports' },
   ],
   Discover: [
+    { href: '/pc-builder', label: 'PC Builder & Planner' },
     { href: '/about', label: 'About Us (Founder)' },
     { href: '/compare', label: 'Game Comparison' },
     { href: '/releases', label: 'Release Calendar' },
