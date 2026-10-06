@@ -32,6 +32,7 @@ import { ComponentCompareModal } from './ComponentCompareModal'
 import { SmartWizardModal } from './SmartWizardModal'
 import { SavedBuildsModal } from './SavedBuildsModal'
 import { ShareBuildModal } from './ShareBuildModal'
+import { ReportButton } from '@/components/report/ReportButton'
 
 import {
   Cpu,
@@ -229,6 +230,12 @@ export function PCBuilderMain() {
                 <Share2 className="w-3.5 h-3.5" />
                 <span>Share</span>
               </button>
+
+              <ReportButton
+                variant="button"
+                contextPage="/pc-builder"
+                label="Report Issue"
+              />
             </div>
           </div>
 
@@ -613,6 +620,8 @@ export function PCBuilderMain() {
           >
             {activeTab === 'performance' ? 'Builder' : 'FPS Test'}
           </button>
+
+          <ReportButton variant="compact" contextPage="/pc-builder" />
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Gamepad2, Github, Twitter, Instagram } from 'lucide-react'
+import { ReportButton } from '@/components/report/ReportButton'
 
 const FOOTER_LINKS = {
   Rankings: [
@@ -87,9 +88,16 @@ export function Footer() {
             © {new Date().getFullYear()} GameRank. Game data provided by{' '}
             <a href="https://rawg.io" target="_blank" rel="noopener noreferrer" className="text-[#00ff88] hover:underline">RAWG</a>.
           </p>
-          <p className="text-gray-600 text-xs">
-            Rankings are calculated using a transparent algorithm combining critic scores, community ratings, and popularity metrics.
-          </p>
+
+          <div className="flex items-center gap-3">
+            <ReportButton variant="pill" defaultCategory="bug" label="Report a Problem" />
+            <Link
+              href="/admin/reports"
+              className="text-xs text-gray-500 hover:text-gray-300 transition-colors"
+            >
+              Admin Desk
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
